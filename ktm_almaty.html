@@ -688,19 +688,19 @@
     .map-area {
       min-height: 280px;
     }
-    /* On mobile, detail card becomes a bottom sheet that leaves
-       the map visible above it */
+    /* On mobile, detail card becomes a floating card at the bottom
+       so the sidebar list and map stay visible above */
     .detail-card {
       position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
       top: auto;
-      width: 100%;
-      max-width: 100%;
-      max-height: 75vh;
-      max-height: 75dvh;
-      border-radius: 18px 18px 0 0;
+      width: auto;
+      max-width: none;
+      max-height: 60vh;
+      max-height: 60dvh;
+      border-radius: 18px;
       z-index: 2000;
       overflow-y: auto;
       animation: detailSlideUp 0.3s ease-out;
@@ -1276,11 +1276,6 @@
     showDetail(p);
     renderList();
     refreshMarkers();
-
-    if (window.innerWidth <= 968) {
-      var mapEl = document.getElementById('map');
-      if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
   }
 
   function showDetail(p) {
