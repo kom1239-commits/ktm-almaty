@@ -1270,11 +1270,24 @@
     if (!p) return;
 
     var zoom = (p.category === 'city' || p.id === 'bao') ? 11 : 9;
-    if (map) map.flyTo(p.coords, zoom, { duration: 0.8 });
 
     showDetail(p);
     renderList();
     refreshMarkers();
+
+    if (map) {
+      var isMobile = window.innerWidth <= 968;
+      var target = p.coords;
+      if (isMobile) {
+        // Shift map center so the pin appears above the bottom detail card
+        var cardEl = document.getElementById('detailCard');
+        var cardH = cardEl ? cardEl.offsetHeight : 300;
+        var pt = map.project(p.coords, zoom);
+        pt.y += cardH / 2;
+        target = map.unproject(pt, zoom);
+      }
+      map.flyTo(target, zoom, { duration: 0.8 });
+    }
   }
 
   function showDetail(p) {
