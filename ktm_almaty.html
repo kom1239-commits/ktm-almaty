@@ -675,7 +675,7 @@
     html, body { height: 100%; height: 100dvh; }
     .app {
       grid-template-columns: 1fr;
-      grid-template-rows: 45vh 1fr;
+      grid-template-rows: 30vh 1fr;
       height: 100vh;
       height: 100dvh;
     }
@@ -688,20 +688,19 @@
     .map-area {
       min-height: 280px;
     }
-    /* On mobile, detail card becomes a floating card at the bottom
-       so the sidebar list and map stay visible above */
+    /* On mobile, detail card lives inside the map area (like desktop)
+       so the map stays visible above the card */
     .detail-card {
-      position: fixed;
+      position: absolute;
       left: 12px;
       right: 12px;
       bottom: 12px;
       top: auto;
       width: auto;
       max-width: none;
-      max-height: 60vh;
-      max-height: 60dvh;
+      max-height: calc(100% - 24px);
       border-radius: 18px;
-      z-index: 2000;
+      z-index: 1000;
       overflow-y: auto;
       animation: detailSlideUp 0.3s ease-out;
     }
