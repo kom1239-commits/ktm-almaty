@@ -668,6 +668,9 @@
     color: var(--accent) !important;
   }
 
+  /* ===== Mobile view tabs (hidden on desktop) ===== */
+  .mobile-tabs { display: none; }
+
   /* Lang toggle */
   body[data-lang="en"] .ko-text { display: none; }
   body[data-lang="ko"] .en-text { display: none; }
@@ -677,20 +680,48 @@
     html, body { height: 100%; height: 100dvh; }
     .app {
       grid-template-columns: 1fr;
-      grid-template-rows: 30vh 1fr;
+      grid-template-rows: auto 1fr;
       height: 100vh;
       height: 100dvh;
     }
+    /* Tab bar at the top, switches between map and list views */
+    .mobile-tabs {
+      display: flex;
+      grid-column: 1 / -1;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 12px;
+      gap: 8px;
+    }
+    .mobile-tab {
+      flex: 1;
+      padding: 10px 12px;
+      background: var(--bg-warm);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .mobile-tab.active {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+    /* Show only one of sidebar/map at a time */
+    body[data-view="map"] .sidebar { display: none; }
+    body[data-view="list"] .map-area { display: none; }
     .sidebar {
       max-height: none;
       border-right: none;
       border-bottom: 1px solid var(--line);
       overflow-y: auto;
-      /* CRITICAL: grid items default to min-height: auto, which would
-         force this row to expand to fit ~500px of intrinsic content
-         (chips + 22-spot list), pushing .map-area below the viewport.
-         min-height: 0 lets the explicit 30vh row track win and makes
-         overflow-y: auto actually scroll inside the 30vh band. */
       min-height: 0;
       min-width: 0;
     }
@@ -704,8 +735,8 @@
       top: auto;
       width: auto;
       max-width: none;
-      /* Cap card height at half the viewport so the map+sidebar
-         always stay visible above. Card scrolls internally if
+      /* Cap card height at half the viewport so the map
+         always stays visible above. Card scrolls internally if
          content is taller. */
       max-height: 50vh;
       max-height: 50dvh;
@@ -738,9 +769,19 @@
   }
 </style>
 </head>
-<body data-lang="ko">
+<body data-lang="ko" data-view="map">
 
 <div class="app">
+
+  <!-- ======= Mobile view tabs (only shown ≤968px) ======= -->
+  <nav class="mobile-tabs">
+    <button class="mobile-tab active" data-view="map" onclick="setView('map')">
+      🗺️ <span class="ko-text">지도</span><span class="en-text">Map</span>
+    </button>
+    <button class="mobile-tab" data-view="list" onclick="setView('list')">
+      📋 <span class="ko-text">목록</span><span class="en-text">List</span>
+    </button>
+  </nav>
 
   <!-- ======= LEFT SIDEBAR ======= -->
   <aside class="sidebar">
@@ -1281,6 +1322,11 @@
 
     var zoom = (p.category === 'city' || p.id === 'bao') ? 11 : 9;
 
+    // On mobile, switch to map view when a place is picked from the list
+    if (window.innerWidth <= 968 && document.body.getAttribute('data-view') !== 'map') {
+      setView('map');
+    }
+
     showDetail(p);
     renderList();
     refreshMarkers();
@@ -1422,6 +1468,18 @@
     if (selectedId) {
       var p = PLACES.find(function(x) { return x.id === selectedId; });
       if (p) showDetail(p);
+    }
+  }
+
+  // ============ MOBILE VIEW TOGGLE ============
+  function setView(view) {
+    document.body.setAttribute('data-view', view);
+    document.querySelectorAll('.mobile-tab').forEach(function(t) {
+      t.classList.toggle('active', t.dataset.view === view);
+    });
+    // Leaflet needs to recompute size when its container becomes visible
+    if (view === 'map' && map) {
+      setTimeout(function() { map.invalidateSize(); }, 50);
     }
   }
 
