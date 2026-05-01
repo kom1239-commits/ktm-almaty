@@ -1458,8 +1458,9 @@
     setupCategoryChips();
     renderList();
     var hashId = decodeURIComponent((location.hash || '').replace('#', ''));
-    var initial = PLACES.find(function(x) { return x.id === hashId; }) ? hashId : 'charyn';
-    setTimeout(function() { selectPlace(initial); }, 600);
+    if (hashId && PLACES.find(function(x) { return x.id === hashId; })) {
+      setTimeout(function() { selectPlace(hashId); }, 600);
+    }
   });
 
   window.addEventListener('hashchange', function() {
