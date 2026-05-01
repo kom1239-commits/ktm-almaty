@@ -686,6 +686,13 @@
       border-right: none;
       border-bottom: 1px solid var(--line);
       overflow-y: auto;
+      /* CRITICAL: grid items default to min-height: auto, which would
+         force this row to expand to fit ~500px of intrinsic content
+         (chips + 22-spot list), pushing .map-area below the viewport.
+         min-height: 0 lets the explicit 30vh row track win and makes
+         overflow-y: auto actually scroll inside the 30vh band. */
+      min-height: 0;
+      min-width: 0;
     }
     /* On mobile, detail card lives inside the map area (like desktop)
        so the map stays visible above the card */
