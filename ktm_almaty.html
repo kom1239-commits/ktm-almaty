@@ -704,7 +704,11 @@
       top: auto;
       width: auto;
       max-width: none;
-      max-height: calc(100% - 24px);
+      /* Cap card height at half the viewport so the map+sidebar
+         always stay visible above. Card scrolls internally if
+         content is taller. */
+      max-height: 50vh;
+      max-height: 50dvh;
       border-radius: 18px;
       z-index: 1000;
       overflow-y: auto;
