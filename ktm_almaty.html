@@ -335,14 +335,14 @@
   /* ===== Map area ===== */
   .map-area {
     position: relative;
-    height: 100%;
     background: #f0e8d4;
     overflow: hidden;
+    min-height: 0;
   }
 
   #map {
-    height: 100%;
-    width: 100%;
+    position: absolute;
+    inset: 0;
   }
 
   /* My Location button */
@@ -686,9 +686,6 @@
       border-right: none;
       border-bottom: 1px solid var(--line);
       overflow-y: auto;
-    }
-    .map-area {
-      min-height: 280px;
     }
     /* On mobile, detail card lives inside the map area (like desktop)
        so the map stays visible above the card */
