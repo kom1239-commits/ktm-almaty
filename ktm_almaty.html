@@ -478,11 +478,7 @@
   }
 
   .detail-photo {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    background: var(--bg-warm);
-    display: block;
+    display: none;
   }
 
   .detail-close {
@@ -692,27 +688,27 @@
     .map-area {
       min-height: 280px;
     }
-    /* On mobile, detail card becomes a full-screen modal so it
-       doesn't overlap the sidebar/map */
+    /* On mobile, detail card becomes a bottom sheet that leaves
+       the map visible above it */
     .detail-card {
       position: fixed;
-      inset: 0;
-      top: 0; right: 0; bottom: 0; left: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: auto;
       width: 100%;
       max-width: 100%;
-      height: 100vh;
-      height: 100dvh;
-      max-height: none;
-      border-radius: 0;
+      max-height: 75vh;
+      max-height: 75dvh;
+      border-radius: 18px 18px 0 0;
       z-index: 2000;
       overflow-y: auto;
       animation: detailSlideUp 0.3s ease-out;
     }
     @keyframes detailSlideUp {
-      from { transform: translateY(20px); opacity: 0; }
+      from { transform: translateY(100%); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-    .detail-photo { height: 200px; }
     .detail-name { font-size: 22px; }
     .detail-close {
       top: 14px;
@@ -721,7 +717,7 @@
       height: 36px;
       font-size: 22px;
     }
-    .detail-body { padding: 18px 18px 36px; }
+    .detail-body { padding: 18px 18px 28px; }
     .side-title { font-size: 22px; }
     .photo-pin-card {
       padding: 4px;
