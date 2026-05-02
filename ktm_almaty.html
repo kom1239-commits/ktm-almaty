@@ -975,7 +975,7 @@
       route_en:"Almaty → Charyn → Black Canyon (20min)",
       best_ko:"차른과 함께 1일", best_en:"Combine with Charyn"
     },
-    { id:"moon-canyon", category:"canyon", coords:[43.2887449, 78.9889382],
+    { id:"moon-canyon", category:"canyon", coords:[42.935386, 78.3259016],
       photo:"yellow-canyon,desert,moon-landscape", icon:"⛰️", color:"#C9A449",
       name_ko:"문 캐년 (옐로 캐년)", name_en:"Moon Canyon",
       cat_ko:"자연 명소", cat_en:"Natural Wonder",
@@ -1249,23 +1249,11 @@
       scrollWheelZoom: true
     });
 
-    // Primary: Esri World Topo Map (clearer road network than CARTO)
-    var primary = L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-      { attribution: 'Tiles © Esri', maxZoom: 18 }
-    );
-    // Fallback: OpenStreetMap (used if Esri tiles error out)
-    var fallback = L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      { attribution: '© OpenStreetMap', maxZoom: 19 }
-    );
-    primary.on('tileerror', function() {
-      if (map.hasLayer(primary)) {
-        map.removeLayer(primary);
-        fallback.addTo(map);
-      }
-    });
-    primary.addTo(map);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap © CARTO',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
 
     L.control.zoom({ position: 'topleft' }).addTo(map);
 
