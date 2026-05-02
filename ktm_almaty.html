@@ -963,29 +963,29 @@
       route_en:"Almaty → Charyn → Black/Moon Canyon → Almaty",
       best_ko:"1일 또는 1박 2일", best_en:"Day trip or 2D1N"
     },
-    { id:"black-canyon", category:"canyon", coords:[43.3422, 78.6947],
+    { id:"black-canyon", category:"canyon", coords:[43.3300, 78.9900],
       photo:"basalt-cliff,canyon,river", icon:"⛰️", color:"#8B5CF6",
       name_ko:"블랙 캐년", name_en:"Black Canyon",
       cat_ko:"자연 명소", cat_en:"Natural Wonder",
-      short_ko:"현무암 절벽과 강물의 대비가 인상적인 짧은 관람 포인트",
-      short_en:"Basalt cliffs & rushing river — quick scenic stop",
-      distance_ko:"215km", distance_en:"215km",
+      short_ko:"차른 캐년 같은 도로 위 — 현무암 절벽 관람 포인트",
+      short_en:"On the same road as Charyn — basalt cliff stop",
+      distance_ko:"210km", distance_en:"210km",
       time_ko:"약 3시간 30분", time_en:"~3.5h",
-      route_ko:"알마티 → 차른 → 블랙 캐년 (차른에서 20분)",
-      route_en:"Almaty → Charyn → Black Canyon (20min)",
-      best_ko:"차른과 함께 1일", best_en:"Combine with Charyn"
+      route_ko:"알마티 → 차른 → 블랙 캐년 (차른에서 10분)",
+      route_en:"Almaty → Charyn → Black Canyon (10min)",
+      best_ko:"차른·문 캐년과 함께 1일", best_en:"Combine with Charyn/Moon"
     },
-    { id:"moon-canyon", category:"canyon", coords:[43.277875, 79.167875],
+    { id:"moon-canyon", category:"canyon", coords:[43.3200, 79.1100],
       photo:"yellow-canyon,desert,moon-landscape", icon:"⛰️", color:"#DC2626",
       name_ko:"문 캐년 (옐로 캐년)", name_en:"Moon Canyon",
       cat_ko:"자연 명소", cat_en:"Natural Wonder",
-      short_ko:"황토색 둥근 능선이 펼쳐진 외계 행성 같은 풍경",
-      short_en:"Lunar-like landscape with golden ridges",
-      distance_ko:"210km", distance_en:"210km",
+      short_ko:"차른 옆 황토색 달 표면 같은 풍경 — 같은 도로 라인",
+      short_en:"Lunar-like golden landscape next to Charyn",
+      distance_ko:"205km", distance_en:"205km",
       time_ko:"약 3시간 30분", time_en:"~3.5h",
-      route_ko:"알마티 → 차른 → 문 캐년 (4WD 권장)",
-      route_en:"Almaty → Charyn → Moon Canyon (4WD)",
-      best_ko:"캐년 클러스터 1일", best_en:"With Charyn cluster"
+      route_ko:"알마티 → 차른 → 문 캐년 (차른에서 15분)",
+      route_en:"Almaty → Charyn → Moon Canyon (15min)",
+      best_ko:"차른·블랙 캐년과 1일", best_en:"With Charyn/Black"
     },
     { id:"saty-village", category:"culture", coords:[43.0692, 78.4080],
       photo:"village,kazakhstan,mountains", icon:"🏘️", color:"#8b6f3a",
@@ -1241,8 +1241,8 @@
   // ============ INIT MAP ============
   function initMap() {
     map = L.map('map', {
-      center: [43.4, 78.0],
-      zoom: 8,
+      center: [43.34, 79.04],
+      zoom: 11,
       minZoom: 6,
       maxZoom: 14,
       zoomControl: false,
@@ -1258,9 +1258,6 @@
     L.control.zoom({ position: 'topleft' }).addTo(map);
 
     PLACES.forEach(addMarker);
-
-    var bounds = L.latLngBounds(PLACES.map(function(p) { return p.coords; }));
-    map.fitBounds(bounds, { padding: [60, 60], maxZoom: 9 });
   }
 
   function buildPinHTML(p, isActive) {
