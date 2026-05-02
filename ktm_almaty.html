@@ -964,7 +964,7 @@
       best_ko:"1일 또는 1박 2일", best_en:"Day trip or 2D1N"
     },
     { id:"black-canyon", category:"canyon", coords:[43.3422, 78.6947],
-      photo:"basalt-cliff,canyon,river", icon:"⛰️", color:"#5C534A",
+      photo:"basalt-cliff,canyon,river", icon:"⛰️", color:"#8B5CF6",
       name_ko:"블랙 캐년", name_en:"Black Canyon",
       cat_ko:"자연 명소", cat_en:"Natural Wonder",
       short_ko:"현무암 절벽과 강물의 대비가 인상적인 짧은 관람 포인트",
@@ -976,7 +976,7 @@
       best_ko:"차른과 함께 1일", best_en:"Combine with Charyn"
     },
     { id:"moon-canyon", category:"canyon", coords:[42.935386, 78.3259016],
-      photo:"yellow-canyon,desert,moon-landscape", icon:"⛰️", color:"#C9A449",
+      photo:"yellow-canyon,desert,moon-landscape", icon:"⛰️", color:"#DC2626",
       name_ko:"문 캐년 (옐로 캐년)", name_en:"Moon Canyon",
       cat_ko:"자연 명소", cat_en:"Natural Wonder",
       short_ko:"황토색 둥근 능선이 펼쳐진 외계 행성 같은 풍경",
@@ -1267,15 +1267,19 @@
     var name = lang === 'en' ? p.name_en : p.name_ko;
     var meta = (lang === 'en' ? p.distance_en : p.distance_ko) + ' · ' +
                (lang === 'en' ? p.time_en : p.time_ko);
+    // Color the pin border with p.color when not active so each marker is
+    // visually distinct (e.g. purple Black Canyon vs red Luna Canyon).
+    var cardStyle = isActive ? '' : ' style="border-color:' + p.color + ';"';
+    var tailStyle = isActive ? '' : ' style="background:' + p.color + ';border-color:' + p.color + ';"';
     return '<div class="photo-pin-wrap">' +
-             '<div class="photo-pin-card' + (isActive ? ' active' : '') + '">' +
+             '<div class="photo-pin-card' + (isActive ? ' active' : '') + '"' + cardStyle + '>' +
                '<img class="photo-pin-img" src="' + photoUrl(p, 80, 80) + '" alt="" loading="lazy">' +
                '<div class="photo-pin-info">' +
                  '<div class="photo-pin-name">' + name + '</div>' +
                  '<div class="photo-pin-meta">' + meta + '</div>' +
                '</div>' +
              '</div>' +
-             '<div class="photo-pin-tail"></div>' +
+             '<div class="photo-pin-tail"' + tailStyle + '></div>' +
            '</div>';
   }
 
