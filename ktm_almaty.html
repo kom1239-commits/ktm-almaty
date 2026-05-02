@@ -1249,11 +1249,23 @@
       scrollWheelZoom: true
     });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '© OpenStreetMap © CARTO',
-      subdomains: 'abcd',
-      maxZoom: 19
-    }).addTo(map);
+    // Primary: Esri World Topo Map (clearer road network than CARTO)
+    var primary = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+      { attribution: 'Tiles © Esri', maxZoom: 18 }
+    );
+    // Fallback: OpenStreetMap (used if Esri tiles error out)
+    var fallback = L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { attribution: '© OpenStreetMap', maxZoom: 19 }
+    );
+    primary.on('tileerror', function() {
+      if (map.hasLayer(primary)) {
+        map.removeLayer(primary);
+        fallback.addTo(map);
+      }
+    });
+    primary.addTo(map);
 
     L.control.zoom({ position: 'topleft' }).addTo(map);
 
