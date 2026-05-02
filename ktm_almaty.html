@@ -963,29 +963,29 @@
       route_en:"Almaty → Charyn → Black/Moon Canyon → Almaty",
       best_ko:"1일 또는 1박 2일", best_en:"Day trip or 2D1N"
     },
-    { id:"black-canyon", category:"canyon", coords:[42.94, 78.20],
+    { id:"black-canyon", category:"canyon", coords:[43.3422, 78.6947],
       photo:"basalt-cliff,canyon,river", icon:"⛰️", color:"#8B5CF6",
       name_ko:"블랙 캐년", name_en:"Black Canyon",
       cat_ko:"자연 명소", cat_en:"Natural Wonder",
-      short_ko:"P-16 도로 방향에 있는 블랙 캐년 포인트",
-      short_en:"Black Canyon point along the P-16 road",
+      short_ko:"현무암 절벽과 강물의 대비가 인상적인 짧은 관람 포인트",
+      short_en:"Basalt cliffs & rushing river — quick scenic stop",
       distance_ko:"215km", distance_en:"215km",
       time_ko:"약 3시간 30분", time_en:"~3.5h",
-      route_ko:"알마티 → A-351 → P-16 → 블랙 캐년",
-      route_en:"Almaty → A-351 → P-16 → Black Canyon",
-      best_ko:"차른·루나 캐년과 함께 1일", best_en:"Combine with Charyn/Luna"
+      route_ko:"알마티 → 차른 → 블랙 캐년 (차른에서 20분)",
+      route_en:"Almaty → Charyn → Black Canyon (20min)",
+      best_ko:"차른과 함께 1일", best_en:"Combine with Charyn"
     },
-    { id:"moon-canyon", category:"canyon", coords:[42.935386, 78.3259016],
+    { id:"moon-canyon", category:"canyon", coords:[43.277875, 79.167875],
       photo:"yellow-canyon,desert,moon-landscape", icon:"⛰️", color:"#DC2626",
-      name_ko:"루나 캐년 (달의 협곡)", name_en:"Luna Canyon",
+      name_ko:"문 캐년 (옐로 캐년)", name_en:"Moon Canyon",
       cat_ko:"자연 명소", cat_en:"Natural Wonder",
-      short_ko:"달 표면 같은 지형의 루나 캐년 포인트",
-      short_en:"Lunar-like canyon landscape",
+      short_ko:"황토색 둥근 능선이 펼쳐진 외계 행성 같은 풍경",
+      short_en:"Lunar-like landscape with golden ridges",
       distance_ko:"210km", distance_en:"210km",
       time_ko:"약 3시간 30분", time_en:"~3.5h",
-      route_ko:"알마티 → A-351 → 루나 캐년",
-      route_en:"Almaty → A-351 → Luna Canyon",
-      best_ko:"블랙 캐년·차른과 함께 1일", best_en:"With Black Canyon and Charyn"
+      route_ko:"알마티 → 차른 → 문 캐년 (4WD 권장)",
+      route_en:"Almaty → Charyn → Moon Canyon (4WD)",
+      best_ko:"캐년 클러스터 1일", best_en:"With Charyn cluster"
     },
     { id:"saty-village", category:"culture", coords:[43.0692, 78.4080],
       photo:"village,kazakhstan,mountains", icon:"🏘️", color:"#8b6f3a",
@@ -999,12 +999,12 @@
       route_en:"Almaty → Zhalanash → Saty",
       best_ko:"콜사이·카인디 1박 베이스", best_en:"Lakes overnight base"
     },
-    { id:"kolsai", category:"lake", coords:[42.9569, 78.3247],
+    { id:"kolsai", category:"lake", coords:[42.935386, 78.3259016],
       photo:"alpine-lake,emerald,mountain-forest", icon:"🌊", color:"#3F8297",
       name_ko:"콜사이 호수", name_en:"Kolsai Lakes",
       cat_ko:"자연 명소", cat_en:"Natural Wonder",
-      short_ko:"천산 산맥 속 에메랄드빛 고산 호수",
-      short_en:"Emerald alpine lakes in the Tien Shan mountains",
+      short_ko:"천산 산맥 속 에메랄드빛 고산 호수 (1호수까지 포장도로)",
+      short_en:"Emerald alpine lakes — paved road to Lake 1",
       distance_ko:"285km", distance_en:"285km",
       time_ko:"약 4시간 30분", time_en:"~4.5h",
       route_ko:"알마티 → 사티 마을 → 콜사이 1호수",
@@ -1241,8 +1241,8 @@
   // ============ INIT MAP ============
   function initMap() {
     map = L.map('map', {
-      center: [42.95, 78.27],
-      zoom: 10,
+      center: [43.4, 78.0],
+      zoom: 8,
       minZoom: 6,
       maxZoom: 14,
       zoomControl: false,
@@ -1258,6 +1258,9 @@
     L.control.zoom({ position: 'topleft' }).addTo(map);
 
     PLACES.forEach(addMarker);
+
+    var bounds = L.latLngBounds(PLACES.map(function(p) { return p.coords; }));
+    map.fitBounds(bounds, { padding: [60, 60], maxZoom: 9 });
   }
 
   function buildPinHTML(p, isActive) {
