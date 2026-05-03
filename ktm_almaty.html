@@ -768,221 +768,304 @@
     .photo-pin-meta { font-size: 9px; }
   }
 
-  /* ===== Travel Plan CTA (ktm-plan- prefixed, user-provided design) ===== */
+  /* ===== Premium Travel Plan CTA — Final Mobile Version ===== */
+
   .ktm-plan-cta-wrap {
     position: absolute;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
     z-index: 800;
   }
+
   .ktm-plan-cta {
     position: relative;
     width: 100%;
-    min-height: 112px;
-    border: 1px solid rgba(222, 177, 98, 0.58);
-    border-radius: 30px;
+    min-height: 96px;
+    border: 1px solid rgba(218, 176, 101, 0.62);
+    border-radius: 28px;
     overflow: hidden;
     cursor: pointer;
-    padding: 16px 18px;
+    padding: 12px 14px;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 13px;
     text-align: left;
     font-family: inherit;
     background:
-      radial-gradient(circle at 9% 28%, rgba(255, 221, 143, 0.26) 0%, rgba(255, 221, 143, 0.05) 26%, transparent 43%),
-      radial-gradient(circle at 53% 5%, rgba(255, 255, 255, 0.10) 0%, transparent 28%),
-      radial-gradient(circle at 91% 48%, rgba(237, 190, 105, 0.13) 0%, transparent 30%),
-      linear-gradient(135deg, #1d120c 0%, #2a1a10 26%, #4b321f 50%, #2b1b11 74%, #160d08 100%);
+      radial-gradient(circle at 12% 28%, rgba(246, 203, 117, 0.26) 0%, rgba(246, 203, 117, 0.08) 28%, transparent 46%),
+      radial-gradient(circle at 55% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 30%),
+      radial-gradient(circle at 88% 48%, rgba(241, 204, 134, 0.13) 0%, transparent 35%),
+      linear-gradient(135deg, #1b110c 0%, #2a1a10 24%, #4b321f 52%, #2b1b11 76%, #150d08 100%);
     box-shadow:
-      0 18px 38px rgba(34, 20, 10, 0.32),
-      0 5px 12px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 233, 184, 0.22),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+      0 14px 30px rgba(34, 20, 10, 0.32),
+      0 4px 10px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 233, 184, 0.20),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.38);
     -webkit-tap-highlight-color: transparent;
   }
+
   .ktm-plan-cta::before {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.055) 18%, transparent 36%),
-      repeating-linear-gradient(45deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 10px);
-    opacity: 0.65;
     pointer-events: none;
+    opacity: 0.62;
+    background:
+      linear-gradient(112deg, transparent 0%, rgba(255,255,255,0.055) 18%, transparent 36%),
+      repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.018) 0px,
+        rgba(255,255,255,0.018) 1px,
+        transparent 1px,
+        transparent 10px
+      );
   }
+
   .ktm-plan-cta::after {
     content: "";
     position: absolute;
-    left: 0;
-    top: 8px;
-    bottom: 8px;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 219, 137, 0.65), transparent);
-    opacity: 0.7;
+    inset: 1px;
+    border-radius: 27px;
+    border: 1px solid rgba(255, 226, 165, 0.08);
+    pointer-events: none;
   }
-  .ktm-plan-cta:active { transform: scale(0.985); }
 
-  .ktm-plan-shine { position: absolute; border-radius: 999px; pointer-events: none; filter: blur(18px); }
-  .ktm-plan-shine-1 { width: 130px; height: 130px; left: -46px; top: -28px; background: rgba(232, 185, 93, 0.19); }
-  .ktm-plan-shine-2 { width: 120px; height: 120px; right: 34px; bottom: -62px; background: rgba(255, 235, 180, 0.10); }
+  .ktm-plan-cta:active {
+    transform: scale(0.985);
+  }
 
+  /* glow */
+  .ktm-plan-shine {
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(18px);
+  }
+
+  .ktm-plan-shine-1 {
+    width: 110px;
+    height: 110px;
+    left: -42px;
+    top: -26px;
+    background: rgba(232, 185, 93, 0.18);
+  }
+
+  .ktm-plan-shine-2 {
+    width: 100px;
+    height: 100px;
+    right: 28px;
+    bottom: -56px;
+    background: rgba(255, 235, 180, 0.10);
+  }
+
+  /* small sparkles */
   .ktm-plan-sparkle {
     position: absolute;
     color: #f5db98;
     text-shadow: 0 0 10px rgba(255, 222, 144, 0.9);
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0.85;
   }
-  .sparkle-a { left: 132px; top: 14px; font-size: 14px; }
-  .sparkle-b { right: 122px; top: 24px; font-size: 11px; opacity: 0.7; }
 
+  .sparkle-a {
+    left: 122px;
+    top: 12px;
+    font-size: 12px;
+  }
+
+  .sparkle-b {
+    right: 116px;
+    top: 19px;
+    font-size: 10px;
+    opacity: 0.65;
+  }
+
+  /* compass */
   .ktm-plan-compass {
     position: relative;
-    flex: 0 0 86px;
-    width: 86px;
-    height: 86px;
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     display: grid;
     place-items: center;
-    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.28));
+    filter: drop-shadow(0 9px 15px rgba(0, 0, 0, 0.32));
+    z-index: 2;
   }
+
   .ktm-compass-outer {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 28%, #fff5cf 0%, #ead195 26%, #b47a28 52%, #593819 76%, #2a170b 100%);
+    background:
+      radial-gradient(circle at 30% 28%, #fff6d6 0%, #ead195 27%, #b47a28 54%, #593819 78%, #2a170b 100%);
     box-shadow:
-      inset 0 2px 8px rgba(255, 255, 255, 0.38),
-      inset 0 -8px 14px rgba(52, 29, 9, 0.52),
-      0 7px 18px rgba(0, 0, 0, 0.28);
+      inset 0 2px 7px rgba(255, 255, 255, 0.42),
+      inset 0 -7px 13px rgba(52, 29, 9, 0.55),
+      0 7px 16px rgba(0, 0, 0, 0.28);
   }
+
   .ktm-compass-inner {
     position: absolute;
-    inset: 9px;
+    inset: 8px;
     border-radius: 50%;
     border: 1px solid rgba(126, 82, 26, 0.34);
-    background: radial-gradient(circle at 35% 30%, #fff8df 0%, #f4e4b8 52%, #cc9a4c 100%);
+    background:
+      radial-gradient(circle at 35% 30%, #fff8df 0%, #f4e4b8 52%, #cc9a4c 100%);
     box-shadow:
-      inset 0 0 8px rgba(255, 255, 255, 0.72),
-      inset 0 -6px 10px rgba(115, 68, 22, 0.20);
+      inset 0 0 8px rgba(255, 255, 255, 0.70),
+      inset 0 -5px 9px rgba(115, 68, 22, 0.20);
   }
+
   .ktm-compass-glass {
     position: absolute;
-    inset: 14px;
+    inset: 13px;
     border-radius: 50%;
     background:
-      linear-gradient(135deg, rgba(255,255,255,0.45), transparent 34%),
+      linear-gradient(135deg, rgba(255,255,255,0.42), transparent 34%),
       radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
     border: 1px solid rgba(255, 246, 213, 0.38);
   }
-  .ktm-compass-cross { position: absolute; background: rgba(97, 57, 20, 0.78); z-index: 2; }
-  .ktm-compass-cross-v { width: 1.5px; height: 48px; }
-  .ktm-compass-cross-h { width: 48px;  height: 1.5px; }
 
-  .ktm-compass-needle { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 3; }
+  .ktm-compass-cross {
+    position: absolute;
+    background: rgba(97, 57, 20, 0.76);
+    z-index: 2;
+  }
+
+  .ktm-compass-cross-v {
+    width: 1.4px;
+    height: 40px;
+  }
+
+  .ktm-compass-cross-h {
+    width: 40px;
+    height: 1.4px;
+  }
+
+  .ktm-compass-needle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    z-index: 3;
+  }
+
   .ktm-compass-needle-n {
     transform: translate(-50%, -94%);
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 31px solid #6b351a;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 26px solid #6b351a;
     filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));
   }
+
   .ktm-compass-needle-s {
     transform: translate(-50%, 5%);
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 31px solid #c88735;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 26px solid #c88735;
     filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
   }
+
   .ktm-compass-center {
     position: absolute;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 999px;
     background: #5a3216;
     z-index: 4;
-    box-shadow: 0 0 0 2px rgba(243, 211, 137, 0.55);
+    box-shadow: 0 0 0 2px rgba(243, 211, 137, 0.52);
   }
+
   .ktm-compass-letter {
     position: absolute;
     z-index: 5;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 700;
     color: #7a4b20;
     font-family: Georgia, serif;
   }
-  .ktm-n { top: 7px; left: 50%; transform: translateX(-50%); }
-  .ktm-s { bottom: 7px; left: 50%; transform: translateX(-50%); }
-  .ktm-w { left: 9px; top: 50%; transform: translateY(-50%); }
-  .ktm-e { right: 9px; top: 50%; transform: translateY(-50%); }
 
+  .ktm-n { top: 6px; left: 50%; transform: translateX(-50%); }
+  .ktm-s { bottom: 6px; left: 50%; transform: translateX(-50%); }
+  .ktm-w { left: 8px; top: 50%; transform: translateY(-50%); }
+  .ktm-e { right: 8px; top: 50%; transform: translateY(-50%); }
+
+  /* text */
   .ktm-plan-copy {
     position: relative;
     z-index: 2;
-    flex: 1;
+    flex: 1 1 auto;
     min-width: 0;
     overflow: hidden;
     padding-top: 1px;
   }
+
   .ktm-plan-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
-    padding: 0 18px;
-    margin-bottom: 9px;
+    height: 24px;
+    padding: 0 14px;
+    margin-bottom: 6px;
     border-radius: 999px;
     border: 1px solid rgba(216, 177, 103, 0.78);
     background: rgba(80, 51, 28, 0.56);
     color: #f3d89c;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     line-height: 1;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.10),
-      0 0 14px rgba(219, 172, 86, 0.10);
+      0 0 12px rgba(219, 172, 86, 0.10);
   }
+
   .ktm-plan-title {
     color: #fff9ee;
-    font-size: 27px;
+    font-size: 23px;
     font-weight: 900;
-    line-height: 1.08;
-    letter-spacing: -0.04em;
+    line-height: 1.05;
+    letter-spacing: -0.055em;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .ktm-plan-subtitle {
-    margin-top: 7px;
+    margin-top: 5px;
     color: #e6c995;
-    font-size: 16px;
+    font-size: 13.5px;
     font-weight: 500;
-    line-height: 1.28;
-    letter-spacing: -0.03em;
-    word-break: keep-all;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
   }
+
+  /* arrow */
   .ktm-plan-arrow {
     position: relative;
     z-index: 2;
-    flex: 0 0 62px;
-    width: 62px;
-    height: 62px;
+    flex: 0 0 54px;
+    width: 54px;
+    height: 54px;
     border-radius: 999px;
     display: grid;
     place-items: center;
-    background: radial-gradient(circle at 35% 28%, #fffdf3 0%, #f5ead0 58%, #e2c994 100%);
+    background:
+      radial-gradient(circle at 35% 28%, #fffdf3 0%, #f5ead0 58%, #e2c994 100%);
     color: #2a1a10;
-    font-size: 42px;
+    font-size: 36px;
     line-height: 1;
     font-weight: 300;
     box-shadow:
-      0 11px 24px rgba(0,0,0,0.22),
+      0 10px 22px rgba(0,0,0,0.22),
       inset 0 1px 0 rgba(255,255,255,0.85),
       inset 0 -4px 8px rgba(142, 98, 37, 0.12);
     border: 1px solid rgba(255, 242, 206, 0.84);
@@ -991,32 +1074,57 @@
 
   body[data-detail-open="true"] .ktm-plan-cta-wrap,
   body[data-picker-open="true"] .ktm-plan-cta-wrap,
-  body[data-itin-open="true"] .ktm-plan-cta-wrap { display: none; }
-
-  @media (max-width: 430px) {
-    .ktm-plan-cta-wrap { left: 14px; right: 14px; bottom: 14px; }
-    .ktm-plan-cta { min-height: 108px; padding: 14px 15px; gap: 14px; border-radius: 28px; }
-    .ktm-plan-compass { flex-basis: 78px; width: 78px; height: 78px; }
-    .ktm-compass-cross-v { height: 43px; }
-    .ktm-compass-cross-h { width: 43px; }
-    .ktm-compass-needle-n { border-bottom-width: 28px; }
-    .ktm-compass-needle-s { border-top-width: 28px; }
-    .ktm-plan-badge { height: 28px; padding: 0 16px; margin-bottom: 8px; font-size: 14px; }
-    .ktm-plan-title { font-size: 25px; }
-    .ktm-plan-subtitle { font-size: 15px; }
-    .ktm-plan-arrow { flex-basis: 58px; width: 58px; height: 58px; font-size: 38px; }
+  body[data-itin-open="true"] .ktm-plan-cta-wrap {
+    display: none;
   }
-  @media (max-width: 375px) {
-    .ktm-plan-cta { gap: 11px; padding: 13px; }
-    .ktm-plan-compass { flex-basis: 70px; width: 70px; height: 70px; }
-    .ktm-compass-cross-v { height: 39px; }
-    .ktm-compass-cross-h { width: 39px; }
-    .ktm-compass-needle-n { border-bottom-width: 25px; }
-    .ktm-compass-needle-s { border-top-width: 25px; }
-    .ktm-plan-badge { font-size: 12px; height: 25px; padding: 0 13px; }
-    .ktm-plan-title { font-size: 22px; }
-    .ktm-plan-subtitle { font-size: 13.5px; }
-    .ktm-plan-arrow { flex-basis: 52px; width: 52px; height: 52px; font-size: 34px; }
+
+  /* Small mobile */
+  @media (max-width: 393px) {
+    .ktm-plan-cta-wrap {
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+    }
+
+    .ktm-plan-cta {
+      min-height: 90px;
+      padding: 11px 12px;
+      gap: 10px;
+      border-radius: 26px;
+    }
+
+    .ktm-plan-compass {
+      flex-basis: 64px;
+      width: 64px;
+      height: 64px;
+    }
+
+    .ktm-compass-cross-v { height: 36px; }
+    .ktm-compass-cross-h { width: 36px; }
+    .ktm-compass-needle-n { border-bottom-width: 23px; }
+    .ktm-compass-needle-s { border-top-width: 23px; }
+
+    .ktm-plan-badge {
+      height: 22px;
+      padding: 0 12px;
+      margin-bottom: 5px;
+      font-size: 11px;
+    }
+
+    .ktm-plan-title {
+      font-size: 20px;
+    }
+
+    .ktm-plan-subtitle {
+      font-size: 12px;
+    }
+
+    .ktm-plan-arrow {
+      flex-basis: 48px;
+      width: 48px;
+      height: 48px;
+      font-size: 32px;
+    }
   }
 
   /* ===== Destination Picker Sheet ===== */
@@ -1440,7 +1548,6 @@
 
 <div class="app">
 
-  <!-- ======= Mobile view tabs (only shown ≤968px) ======= -->
   <nav class="mobile-tabs">
     <button class="mobile-tab active" data-view="map" onclick="setView('map')">
       🗺️ <span class="ko-text">지도</span><span class="en-text">Map</span>
@@ -1450,7 +1557,6 @@
     </button>
   </nav>
 
-  <!-- ======= LEFT SIDEBAR ======= -->
   <aside class="sidebar">
     <div class="brand-bar">
       <a class="brand" onclick="goHome()">
@@ -1473,7 +1579,6 @@
         <span class="en-text">Real GPS · Detailed Guide</span>
       </p>
 
-      <!-- Search -->
       <div class="search-box">
         <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/>
@@ -1482,7 +1587,6 @@
         <input type="text" id="searchInput" class="search-input" placeholder="장소 검색 (예: 차른, 콜사이)">
       </div>
 
-      <!-- Category chips -->
       <div class="cat-chips" id="catChips">
         <button class="cat-chip active" data-cat="all">
           <span class="ko-text">전체</span><span class="en-text">All</span>
@@ -1504,7 +1608,6 @@
         </button>
       </div>
 
-      <!-- Spot list -->
       <div id="spotList" class="spot-list"></div>
     </div>
 
@@ -1517,7 +1620,6 @@
     </a>
   </aside>
 
-  <!-- ======= RIGHT MAP AREA ======= -->
   <main class="map-area">
     <div id="map"></div>
 
@@ -1530,8 +1632,6 @@
       <span class="en-text">My Location</span>
     </button>
 
-    <!-- Premium floating CTA: Travel Plan -->
-    <!-- ===== Premium floating CTA: Travel Plan (ktm-plan- prefix) ===== -->
     <div class="ktm-plan-cta-wrap" id="planCta">
       <button class="ktm-plan-cta" type="button" onclick="openPlannerSheet()">
         <div class="ktm-plan-shine ktm-plan-shine-1"></div>
@@ -1564,7 +1664,6 @@
       </button>
     </div>
 
-    <!-- Detail card -->
     <div class="detail-card" id="detailCard" style="display:none;">
       <button class="detail-close" onclick="closeDetail()">×</button>
       <img class="detail-photo" id="detailPhoto" src="" alt="">
@@ -1646,7 +1745,6 @@
 
 </div>
 
-<!-- ===== Destination Picker Sheet ===== -->
 <div class="picker-sheet" id="pickerSheet" aria-modal="true" role="dialog">
   <div class="picker-backdrop" onclick="closePlanner()"></div>
   <div class="picker-panel">
@@ -1677,7 +1775,6 @@
   </div>
 </div>
 
-<!-- ===== Generated Itinerary screen ===== -->
 <div class="itin-screen" id="itinScreen">
   <div class="itin-header">
     <button class="itin-back" onclick="backToPicker()" aria-label="뒤로">‹</button>
@@ -2658,6 +2755,5 @@
     }
   });
 </script>
-
 </body>
 </html>
