@@ -443,89 +443,218 @@
     .search-input { font-size: 13px; }
   }
 
-  /* ===== Travel Plan CTA (premium floating card) ===== */
+  /* ===== Travel Plan CTA (luxury dark-brown + gold) ===== */
   .plan-cta {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 220px; /* JS will adjust to sit above .bottom-panel */
     z-index: 1001;
-    width: min(560px, calc(100% - 28px));
+    width: min(560px, calc(100% - 24px));
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 13px 14px 13px 18px;
-    background: linear-gradient(135deg, #FFFDF8 0%, #FFF1DC 100%);
-    border: 1.5px solid rgba(201,93,46,.22);
-    border-radius: 18px;
-    box-shadow: 0 14px 34px rgba(43,36,29,.16),
-                0 2px 8px rgba(43,36,29,.06),
-                inset 0 1px 0 rgba(255,255,255,.7);
+    gap: 14px;
+    padding: 16px 14px 16px 16px;
+    background: linear-gradient(135deg, #24170f 0%, #3a291d 28%, #4c3421 52%, #2b1c13 78%, #1d120c 100%);
+    border: 1px solid rgba(200, 157, 87, 0.40);
+    border-radius: 30px;
+    box-shadow: 0 18px 40px rgba(47, 27, 12, 0.28),
+                0 4px 14px rgba(0, 0, 0, 0.22);
     cursor: pointer;
     text-align: left;
     font-family: inherit;
-    transition: transform .18s ease, box-shadow .18s ease;
+    transition: transform .25s ease, box-shadow .25s ease;
     overflow: hidden;
+    color: #fff;
+    -webkit-tap-highlight-color: transparent;
   }
+  /* warm glow / sheen overlays */
   .plan-cta::before {
     content: '';
     position: absolute;
-    top: 0; bottom: 0; left: 0;
-    width: 4px;
-    background: linear-gradient(to bottom, var(--c-city), #E89364);
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,215,120,0.25), transparent 24%),
+      radial-gradient(circle at 55% 0%,  rgba(255,255,255,0.08), transparent 22%),
+      radial-gradient(circle at 85% 50%, rgba(255,200,120,0.10), transparent 20%);
+  }
+  .plan-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.05) 18%, transparent 36%);
+    mix-blend-mode: screen;
+    opacity: .55;
   }
   .plan-cta:hover {
     transform: translateX(-50%) translateY(-2px);
-    box-shadow: 0 18px 42px rgba(43,36,29,.20), 0 3px 10px rgba(43,36,29,.08);
+    box-shadow: 0 24px 52px rgba(47, 27, 12, 0.36), 0 6px 18px rgba(0,0,0,0.28);
   }
-  .plan-cta:active { transform: translateX(-50%) translateY(0); }
-  .plan-cta-icon {
+  .plan-cta:active { transform: translateX(-50%) scale(.985); }
+
+  /* ----- Compass badge (left) ----- */
+  .cta-compass {
+    position: relative;
     flex-shrink: 0;
-    width: 42px; height: 42px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--c-city) 0%, #E27542 100%);
-    display: flex; align-items: center; justify-content: center;
-    color: white;
-    box-shadow: 0 4px 12px rgba(201,93,46,.35);
+    /* outer gold→brown ring */
+    background: radial-gradient(circle at 30% 30%, #f6e9c8 0%, #e1c78d 30%, #9c6d25 62%, #3e2a16 100%);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.28),
+                inset 0 2px 10px rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .plan-cta-body { flex: 1; min-width: 0; }
+  .cta-compass-ring {
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 1px solid rgba(233, 210, 160, 0.65);
+  }
+  .cta-compass-face {
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff7e7 0%, #f4e5bf 55%, #d7b06c 100%);
+    box-shadow: inset 0 2px 6px rgba(120,80,30,.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cta-compass-face::before,
+  .cta-compass-face::after {
+    /* cross hairs */
+    content: '';
+    position: absolute;
+    background: rgba(111, 74, 29, 0.72);
+  }
+  .cta-compass-face::before { left: 50%; top: 0; bottom: 0; width: 1.2px; transform: translateX(-50%); }
+  .cta-compass-face::after  { top: 50%; left: 0; right: 0; height: 1.2px; transform: translateY(-50%); }
+  .cta-dir {
+    position: absolute;
+    font-size: 8px;
+    font-weight: 700;
+    color: #7b5320;
+    letter-spacing: .03em;
+  }
+  .cta-dir.n { top: 4px;    left: 50%; transform: translateX(-50%); }
+  .cta-dir.s { bottom: 4px; left: 50%; transform: translateX(-50%); }
+  .cta-dir.w { left: 5px;   top: 50%;  transform: translateY(-50%); }
+  .cta-dir.e { right: 5px;  top: 50%;  transform: translateY(-50%); }
+  /* needle (red north / gold south) */
+  .cta-needle {
+    position: relative;
+    width: 0;
+    height: 36px;
+    z-index: 2;
+  }
+  .cta-needle::before,
+  .cta-needle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+  .cta-needle::before {
+    top: 0;
+    border-bottom: 18px solid #b03017; /* north tip — burgundy red */
+    transform: translateX(-50%);
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+  }
+  .cta-needle::after {
+    bottom: 0;
+    border-top: 18px solid #c08a34; /* south tip — gold */
+    transform: translateX(-50%);
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,.20));
+  }
+  .cta-pivot {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #6d471b;
+    box-shadow: 0 0 0 2px rgba(255, 247, 226, 0.85);
+    z-index: 3;
+  }
+
+  /* ----- Body (text) ----- */
+  .plan-cta-body {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    min-width: 0;
+  }
   .plan-cta-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(213, 176, 115, 0.65);
+    background: rgba(214, 172, 93, 0.14);
+    color: #f1d698;
     font-family: 'Fraunces', serif;
     font-style: italic;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    color: var(--c-city);
-    background: rgba(201,93,46,.10);
-    padding: 2px 9px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.20em;
+    padding: 3px 11px;
     border-radius: 999px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
   }
   .plan-cta-title {
-    font-size: 15px;
+    color: #ffffff;
+    font-size: 17px;
     font-weight: 800;
-    color: var(--ink);
     line-height: 1.2;
     letter-spacing: -0.01em;
   }
   .plan-cta-sub {
-    font-size: 11.5px;
-    color: var(--ink-soft);
-    margin-top: 2px;
+    color: #ecd2a1;
+    font-size: 12px;
+    line-height: 1.35;
+    margin-top: 3px;
+    opacity: .92;
   }
+
+  /* ----- Right circular button ----- */
   .plan-cta-arrow {
+    position: relative;
+    z-index: 2;
     flex-shrink: 0;
-    width: 30px; height: 30px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    background: var(--ink);
-    color: var(--paper);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px;
-    font-weight: 700;
+    background: radial-gradient(circle at 35% 30%, #fffaf0 0%, #f4ead3 55%, #ede0c0 100%);
+    border: 1px solid rgba(240, 223, 184, 0.75);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2c1d12;
+    transition: transform .25s ease;
   }
+  .plan-cta:hover .plan-cta-arrow { transform: translateX(2px); }
+
   body[data-picker-open="true"] .plan-cta,
   body[data-itin-open="true"] .plan-cta { display: none; }
+
+  @media (max-width: 480px) {
+    .plan-cta { padding: 14px 12px 14px 14px; gap: 12px; border-radius: 26px; }
+    .cta-compass { width: 64px; height: 64px; }
+    .cta-compass-face { inset: 10px; }
+    .cta-needle { height: 32px; }
+    .cta-needle::before { border-bottom-width: 16px; }
+    .cta-needle::after { border-top-width: 16px; }
+    .plan-cta-title { font-size: 16px; }
+    .plan-cta-sub { font-size: 11.5px; }
+    .plan-cta-arrow { width: 46px; height: 46px; }
+    .plan-cta-arrow svg { width: 20px; height: 20px; }
+  }
 
   /* ===== Destination Picker Sheet ===== */
   .picker-sheet {
@@ -972,14 +1101,20 @@
   </div>
 </div>
 
-<!-- ===== Premium floating CTA: Travel Plan ===== -->
+<!-- ===== Premium floating CTA: Travel Plan (luxury dark-brown + gold) ===== -->
 <button class="plan-cta" id="planCta" onclick="openPlanner()" aria-label="내 여행 일정 만들기">
-  <div class="plan-cta-icon">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="9"/>
-      <polygon points="14 9 11 14 8 11 11 6 14 9" fill="currentColor" stroke="none"/>
-    </svg>
+  <div class="cta-compass" aria-hidden="true">
+    <div class="cta-compass-ring"></div>
+    <div class="cta-compass-face">
+      <span class="cta-dir n">N</span>
+      <span class="cta-dir s">S</span>
+      <span class="cta-dir w">W</span>
+      <span class="cta-dir e">E</span>
+      <div class="cta-needle"></div>
+      <div class="cta-pivot"></div>
+    </div>
   </div>
+
   <div class="plan-cta-body">
     <div class="plan-cta-badge">PRIVATE PLAN</div>
     <div class="plan-cta-title">
@@ -987,11 +1122,17 @@
       <span class="en-text">Build My Trip Plan</span>
     </div>
     <div class="plan-cta-sub">
-      <span class="ko-text">여행지 선택 → 자동 일정 생성</span>
-      <span class="en-text">Pick spots → auto itinerary</span>
+      <span class="ko-text">가고 싶은 곳만 고르면 자동으로 일정 완성</span>
+      <span class="en-text">Pick what you want — we plan the rest</span>
     </div>
   </div>
-  <div class="plan-cta-arrow">→</div>
+
+  <div class="plan-cta-arrow" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </svg>
+  </div>
 </button>
 
 <!-- ===== Destination Picker Sheet ===== -->
