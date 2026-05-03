@@ -768,8 +768,7 @@
     .photo-pin-meta { font-size: 9px; }
   }
 
-  /* ===== Premium Travel Plan CTA — Final Mobile Version ===== */
-
+  /* ===== Travel Plan CTA (final, single source) ===== */
   .ktm-plan-cta-wrap {
     position: absolute;
     left: 14px;
@@ -781,350 +780,177 @@
   .ktm-plan-cta {
     position: relative;
     width: 100%;
-    min-height: 96px;
+    height: clamp(72px, calc(100vw - 321px), 78px);
     border: 1px solid rgba(218, 176, 101, 0.62);
-    border-radius: 28px;
+    border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    padding: 12px 14px;
+    padding: 8px 12px;
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 12px;
     text-align: left;
     font-family: inherit;
     background:
-      radial-gradient(circle at 12% 28%, rgba(246, 203, 117, 0.26) 0%, rgba(246, 203, 117, 0.08) 28%, transparent 46%),
-      radial-gradient(circle at 55% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 30%),
-      radial-gradient(circle at 88% 48%, rgba(241, 204, 134, 0.13) 0%, transparent 35%),
-      linear-gradient(135deg, #1b110c 0%, #2a1a10 24%, #4b321f 52%, #2b1b11 76%, #150d08 100%);
+      radial-gradient(circle at 12% 28%, rgba(246, 203, 117, 0.22) 0%, transparent 44%),
+      radial-gradient(circle at 88% 48%, rgba(241, 204, 134, 0.12) 0%, transparent 32%),
+      linear-gradient(135deg, #1b110c 0%, #2a1a10 26%, #4b321f 52%, #2b1b11 76%, #150d08 100%);
     box-shadow:
-      0 14px 30px rgba(34, 20, 10, 0.32),
-      0 4px 10px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 233, 184, 0.20),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.38);
+      0 8px 18px rgba(34, 20, 10, 0.28),
+      0 2px 6px rgba(0, 0, 0, 0.16),
+      inset 0 1px 0 rgba(255, 233, 184, 0.18);
     -webkit-tap-highlight-color: transparent;
   }
+  .ktm-plan-cta:active { transform: scale(0.985); }
 
-  .ktm-plan-cta::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.62;
-    background:
-      linear-gradient(112deg, transparent 0%, rgba(255,255,255,0.055) 18%, transparent 36%),
-      repeating-linear-gradient(
-        45deg,
-        rgba(255,255,255,0.018) 0px,
-        rgba(255,255,255,0.018) 1px,
-        transparent 1px,
-        transparent 10px
-      );
-  }
-
-  .ktm-plan-cta::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    border-radius: 27px;
-    border: 1px solid rgba(255, 226, 165, 0.08);
-    pointer-events: none;
-  }
-
-  .ktm-plan-cta:active {
-    transform: scale(0.985);
-  }
-
-  /* glow */
-  .ktm-plan-shine {
-    position: absolute;
-    border-radius: 999px;
-    pointer-events: none;
-    filter: blur(18px);
-  }
-
-  .ktm-plan-shine-1 {
-    width: 110px;
-    height: 110px;
-    left: -42px;
-    top: -26px;
-    background: rgba(232, 185, 93, 0.18);
-  }
-
-  .ktm-plan-shine-2 {
-    width: 100px;
-    height: 100px;
-    right: 28px;
-    bottom: -56px;
-    background: rgba(255, 235, 180, 0.10);
-  }
-
-  /* small sparkles */
-  .ktm-plan-sparkle {
-    position: absolute;
-    color: #f5db98;
-    text-shadow: 0 0 10px rgba(255, 222, 144, 0.9);
-    pointer-events: none;
-    opacity: 0.85;
-  }
-
-  .sparkle-a {
-    left: 122px;
-    top: 12px;
-    font-size: 12px;
-  }
-
-  .sparkle-b {
-    right: 116px;
-    top: 19px;
-    font-size: 10px;
-    opacity: 0.65;
-  }
-
-  /* compass */
   .ktm-plan-compass {
     position: relative;
-    flex: 0 0 72px;
-    width: 72px;
-    height: 72px;
+    flex: 0 0 50px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: grid;
     place-items: center;
-    filter: drop-shadow(0 9px 15px rgba(0, 0, 0, 0.32));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.26));
     z-index: 2;
   }
-
   .ktm-compass-outer {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background:
-      radial-gradient(circle at 30% 28%, #fff6d6 0%, #ead195 27%, #b47a28 54%, #593819 78%, #2a170b 100%);
+    background: radial-gradient(circle at 30% 28%, #fff6d6 0%, #ead195 27%, #b47a28 54%, #593819 78%, #2a170b 100%);
     box-shadow:
-      inset 0 2px 7px rgba(255, 255, 255, 0.42),
-      inset 0 -7px 13px rgba(52, 29, 9, 0.55),
-      0 7px 16px rgba(0, 0, 0, 0.28);
+      inset 0 1px 4px rgba(255, 255, 255, 0.36),
+      inset 0 -4px 8px rgba(52, 29, 9, 0.50),
+      0 3px 8px rgba(0, 0, 0, 0.22);
   }
-
   .ktm-compass-inner {
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    border: 1px solid rgba(126, 82, 26, 0.34);
+    background: radial-gradient(circle at 35% 30%, #fff8df 0%, #f4e4b8 52%, #cc9a4c 100%);
+  }
+  .ktm-compass-glass {
     position: absolute;
     inset: 8px;
     border-radius: 50%;
-    border: 1px solid rgba(126, 82, 26, 0.34);
-    background:
-      radial-gradient(circle at 35% 30%, #fff8df 0%, #f4e4b8 52%, #cc9a4c 100%);
-    box-shadow:
-      inset 0 0 8px rgba(255, 255, 255, 0.70),
-      inset 0 -5px 9px rgba(115, 68, 22, 0.20);
-  }
-
-  .ktm-compass-glass {
-    position: absolute;
-    inset: 13px;
-    border-radius: 50%;
-    background:
-      linear-gradient(135deg, rgba(255,255,255,0.42), transparent 34%),
-      radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.42), transparent 34%);
     border: 1px solid rgba(255, 246, 213, 0.38);
   }
-
   .ktm-compass-cross {
     position: absolute;
     background: rgba(97, 57, 20, 0.76);
     z-index: 2;
   }
+  .ktm-compass-cross-v { width: 1px; height: 28px; }
+  .ktm-compass-cross-h { width: 28px; height: 1px; }
 
-  .ktm-compass-cross-v {
-    width: 1.4px;
-    height: 40px;
-  }
-
-  .ktm-compass-cross-h {
-    width: 40px;
-    height: 1.4px;
-  }
-
-  .ktm-compass-needle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 0;
-    height: 0;
-    z-index: 3;
-  }
-
+  .ktm-compass-needle { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 3; }
   .ktm-compass-needle-n {
     transform: translate(-50%, -94%);
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 26px solid #6b351a;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 18px solid #6b351a;
   }
-
   .ktm-compass-needle-s {
     transform: translate(-50%, 5%);
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 26px solid #c88735;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 18px solid #c88735;
   }
-
   .ktm-compass-center {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 999px;
     background: #5a3216;
     z-index: 4;
-    box-shadow: 0 0 0 2px rgba(243, 211, 137, 0.52);
+    box-shadow: 0 0 0 1px rgba(243, 211, 137, 0.52);
   }
-
   .ktm-compass-letter {
     position: absolute;
     z-index: 5;
-    font-size: 8px;
+    font-size: 7px;
     font-weight: 700;
     color: #7a4b20;
     font-family: Georgia, serif;
   }
+  .ktm-n { top: 4px; left: 50%; transform: translateX(-50%); }
+  .ktm-s { bottom: 4px; left: 50%; transform: translateX(-50%); }
+  .ktm-w { left: 5px; top: 50%; transform: translateY(-50%); }
+  .ktm-e { right: 5px; top: 50%; transform: translateY(-50%); }
 
-  .ktm-n { top: 6px; left: 50%; transform: translateX(-50%); }
-  .ktm-s { bottom: 6px; left: 50%; transform: translateX(-50%); }
-  .ktm-w { left: 8px; top: 50%; transform: translateY(-50%); }
-  .ktm-e { right: 8px; top: 50%; transform: translateY(-50%); }
-
-  /* text */
   .ktm-plan-copy {
     position: relative;
     z-index: 2;
     flex: 1 1 auto;
     min-width: 0;
     overflow: hidden;
-    padding-top: 1px;
   }
-
   .ktm-plan-badge {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    height: 24px;
-    padding: 0 14px;
-    margin-bottom: 6px;
+    height: 14px;
+    padding: 0 7px;
+    margin-bottom: 2px;
     border-radius: 999px;
-    border: 1px solid rgba(216, 177, 103, 0.78);
+    border: 1px solid rgba(216, 177, 103, 0.72);
     background: rgba(80, 51, 28, 0.56);
     color: #f3d89c;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.16em;
     line-height: 1;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.10),
-      0 0 12px rgba(219, 172, 86, 0.10);
   }
-
   .ktm-plan-title {
     color: #fff9ee;
-    font-size: 23px;
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.055em;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
   .ktm-plan-subtitle {
-    margin-top: 5px;
+    margin-top: 2px;
     color: #e6c995;
-    font-size: 13.5px;
+    font-size: 11px;
     font-weight: 500;
     line-height: 1.2;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
-  /* arrow */
   .ktm-plan-arrow {
     position: relative;
     z-index: 2;
-    flex: 0 0 54px;
-    width: 54px;
-    height: 54px;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
     border-radius: 999px;
     display: grid;
     place-items: center;
-    background:
-      radial-gradient(circle at 35% 28%, #fffdf3 0%, #f5ead0 58%, #e2c994 100%);
+    background: radial-gradient(circle at 35% 28%, #fffdf3 0%, #f5ead0 58%, #e2c994 100%);
     color: #2a1a10;
-    font-size: 36px;
+    font-size: 22px;
     line-height: 1;
     font-weight: 300;
     box-shadow:
-      0 10px 22px rgba(0,0,0,0.22),
-      inset 0 1px 0 rgba(255,255,255,0.85),
-      inset 0 -4px 8px rgba(142, 98, 37, 0.12);
+      0 4px 8px rgba(0,0,0,0.22),
+      inset 0 1px 0 rgba(255,255,255,0.85);
     border: 1px solid rgba(255, 242, 206, 0.84);
-    padding-bottom: 5px;
+    padding-bottom: 2px;
   }
 
   body[data-detail-open="true"] .ktm-plan-cta-wrap,
   body[data-picker-open="true"] .ktm-plan-cta-wrap,
   body[data-itin-open="true"] .ktm-plan-cta-wrap {
     display: none;
-  }
-
-  /* Small mobile */
-  @media (max-width: 393px) {
-    .ktm-plan-cta-wrap {
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-    }
-
-    .ktm-plan-cta {
-      min-height: 90px;
-      padding: 11px 12px;
-      gap: 10px;
-      border-radius: 26px;
-    }
-
-    .ktm-plan-compass {
-      flex-basis: 64px;
-      width: 64px;
-      height: 64px;
-    }
-
-    .ktm-compass-cross-v { height: 36px; }
-    .ktm-compass-cross-h { width: 36px; }
-    .ktm-compass-needle-n { border-bottom-width: 23px; }
-    .ktm-compass-needle-s { border-top-width: 23px; }
-
-    .ktm-plan-badge {
-      height: 22px;
-      padding: 0 12px;
-      margin-bottom: 5px;
-      font-size: 11px;
-    }
-
-    .ktm-plan-title {
-      font-size: 20px;
-    }
-
-    .ktm-plan-subtitle {
-      font-size: 12px;
-    }
-
-    .ktm-plan-arrow {
-      flex-basis: 48px;
-      width: 48px;
-      height: 48px;
-      font-size: 32px;
-    }
   }
 
   /* ===== Destination Picker Sheet ===== */
@@ -1634,11 +1460,6 @@
 
     <div class="ktm-plan-cta-wrap" id="planCta">
       <button class="ktm-plan-cta" type="button" onclick="openPlannerSheet()">
-        <div class="ktm-plan-shine ktm-plan-shine-1"></div>
-        <div class="ktm-plan-shine ktm-plan-shine-2"></div>
-        <div class="ktm-plan-sparkle sparkle-a">✦</div>
-        <div class="ktm-plan-sparkle sparkle-b">✧</div>
-
         <div class="ktm-plan-compass" aria-hidden="true">
           <div class="ktm-compass-outer"></div>
           <div class="ktm-compass-inner"></div>
