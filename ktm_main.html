@@ -443,160 +443,243 @@
     .search-input { font-size: 13px; }
   }
 
-  /* ===== Travel Plan CTA (luxury dark-brown + gold) ===== */
-  .plan-cta {
+  /* ===== Travel Plan CTA (ktm-plan- prefixed, user-provided design) ===== */
+  .ktm-plan-cta-wrap {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 220px; /* JS will reposition above .bottom-panel with a 14px gap */
-    z-index: 1001;
-    width: calc(100% - 32px);
-    max-width: 600px;
+    left: 16px;
+    right: 16px;
+    bottom: 166px; /* JS will fine-tune so the gap above .bottom-panel stays ~16px */
+    z-index: 800;
+  }
+
+  .ktm-plan-cta {
+    position: relative;
+    width: 100%;
+    min-height: 112px;
+    border: 1px solid rgba(222, 177, 98, 0.58);
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 16px 18px;
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px;
-    background:
-      radial-gradient(circle at 12% 18%, rgba(255,212,135,0.22), transparent 28%),
-      radial-gradient(circle at 50% 0%,  rgba(255,235,180,0.10), transparent 26%),
-      radial-gradient(circle at 88% 70%, rgba(255,200,120,0.14), transparent 24%),
-      linear-gradient(135deg, #1c120a 0%, #2c1d12 22%, #3e2a1a 48%, #2a1c12 74%, #150c06 100%);
-    border: 1px solid rgba(208, 170, 95, 0.42);
-    border-radius: 24px;
-    box-shadow:
-      0 22px 44px rgba(20, 12, 6, 0.46),
-      0 6px 16px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 220, 160, 0.10);
-    cursor: pointer;
+    gap: 18px;
     text-align: left;
     font-family: inherit;
-    transition: transform .25s ease, box-shadow .25s ease;
-    overflow: hidden;
-    color: #fff;
+    background:
+      radial-gradient(circle at 9% 28%, rgba(255, 221, 143, 0.26) 0%, rgba(255, 221, 143, 0.05) 26%, transparent 43%),
+      radial-gradient(circle at 53% 5%, rgba(255, 255, 255, 0.10) 0%, transparent 28%),
+      radial-gradient(circle at 91% 48%, rgba(237, 190, 105, 0.13) 0%, transparent 30%),
+      linear-gradient(135deg, #1d120c 0%, #2a1a10 26%, #4b321f 50%, #2b1b11 74%, #160d08 100%);
+    box-shadow:
+      0 18px 38px rgba(34, 20, 10, 0.32),
+      0 5px 12px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 233, 184, 0.22),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.35);
     -webkit-tap-highlight-color: transparent;
   }
-  /* gentle screen-blend sheen running diagonally */
-  .plan-cta::before {
-    content: '';
+  .ktm-plan-cta::before {
+    content: "";
     position: absolute;
     inset: 0;
+    background:
+      linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.055) 18%, transparent 36%),
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 10px);
+    opacity: 0.65;
     pointer-events: none;
-    background: linear-gradient(112deg, transparent 0%, rgba(255,235,180,.08) 22%, transparent 44%, transparent 70%, rgba(255,220,150,.05) 84%, transparent 100%);
-    mix-blend-mode: screen;
   }
-  /* tiny gold sparkles */
-  .plan-cta::after {
-    content: '';
+  .ktm-plan-cta::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 219, 137, 0.65), transparent);
+    opacity: 0.7;
+  }
+  .ktm-plan-cta:active { transform: scale(0.985); }
+
+  .ktm-plan-shine { position: absolute; border-radius: 999px; pointer-events: none; filter: blur(18px); }
+  .ktm-plan-shine-1 { width: 130px; height: 130px; left: -46px; top: -28px; background: rgba(232, 185, 93, 0.19); }
+  .ktm-plan-shine-2 { width: 120px; height: 120px; right: 34px; bottom: -62px; background: rgba(255, 235, 180, 0.10); }
+
+  .ktm-plan-sparkle {
+    position: absolute;
+    color: #f5db98;
+    text-shadow: 0 0 10px rgba(255, 222, 144, 0.9);
+    pointer-events: none;
+    opacity: 0.9;
+  }
+  .sparkle-a { left: 132px; top: 14px;  font-size: 14px; }
+  .sparkle-b { right: 122px; top: 24px; font-size: 11px; opacity: 0.7; }
+
+  .ktm-plan-compass {
+    position: relative;
+    flex: 0 0 86px;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.28));
+  }
+  .ktm-compass-outer {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    background-image:
-      radial-gradient(circle, rgba(255,225,160,.65) 0 .8px, transparent 1.2px),
-      radial-gradient(circle, rgba(255,225,160,.45) 0 .6px, transparent 1px);
-    background-size: 140px 100px, 90px 70px;
-    background-position: 22px 16px, 80px 60px;
-    opacity: .35;
-  }
-  .plan-cta:hover {
-    transform: translateX(-50%) translateY(-2px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 28%, #fff5cf 0%, #ead195 26%, #b47a28 52%, #593819 76%, #2a170b 100%);
     box-shadow:
-      0 26px 54px rgba(20, 12, 6, 0.52),
-      0 8px 20px rgba(0, 0, 0, 0.32);
+      inset 0 2px 8px rgba(255, 255, 255, 0.38),
+      inset 0 -8px 14px rgba(52, 29, 9, 0.52),
+      0 7px 18px rgba(0, 0, 0, 0.28);
   }
-  .plan-cta:active { transform: translateX(-50%) scale(.985); }
-
-  /* ----- Compass (SVG) ----- */
-  .cta-compass-svg {
-    position: relative;
+  .ktm-compass-inner {
+    position: absolute;
+    inset: 9px;
+    border-radius: 50%;
+    border: 1px solid rgba(126, 82, 26, 0.34);
+    background: radial-gradient(circle at 35% 30%, #fff8df 0%, #f4e4b8 52%, #cc9a4c 100%);
+    box-shadow:
+      inset 0 0 8px rgba(255, 255, 255, 0.72),
+      inset 0 -6px 10px rgba(115, 68, 22, 0.20);
+  }
+  .ktm-compass-glass {
+    position: absolute;
+    inset: 14px;
+    border-radius: 50%;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.45), transparent 34%),
+      radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+    border: 1px solid rgba(255, 246, 213, 0.38);
+  }
+  .ktm-compass-cross {
+    position: absolute;
+    background: rgba(97, 57, 20, 0.78);
     z-index: 2;
-    flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,.35));
   }
+  .ktm-compass-cross-v { width: 1.5px; height: 48px; }
+  .ktm-compass-cross-h { width: 48px;  height: 1.5px; }
 
-  /* ----- Body (text) ----- */
-  .plan-cta-body {
-    position: relative;
-    z-index: 2;
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
+  .ktm-compass-needle { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: 3; }
+  .ktm-compass-needle-n {
+    transform: translate(-50%, -94%);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 31px solid #6b351a;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));
   }
-  .plan-cta-badge {
-    align-self: flex-start;
+  .ktm-compass-needle-s {
+    transform: translate(-50%, 5%);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 31px solid #c88735;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+  }
+  .ktm-compass-center {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #5a3216;
+    z-index: 4;
+    box-shadow: 0 0 0 2px rgba(243, 211, 137, 0.55);
+  }
+  .ktm-compass-letter {
+    position: absolute;
+    z-index: 5;
+    font-size: 9px;
+    font-weight: 700;
+    color: #7a4b20;
+    font-family: Georgia, serif;
+  }
+  .ktm-n { top: 7px; left: 50%; transform: translateX(-50%); }
+  .ktm-s { bottom: 7px; left: 50%; transform: translateX(-50%); }
+  .ktm-w { left: 9px; top: 50%; transform: translateY(-50%); }
+  .ktm-e { right: 9px; top: 50%; transform: translateY(-50%); }
+
+  .ktm-plan-copy { position: relative; z-index: 2; flex: 1; min-width: 0; padding-top: 1px; }
+  .ktm-plan-badge {
     display: inline-flex;
     align-items: center;
-    border: 1px solid rgba(218, 178, 110, 0.7);
-    background: rgba(214, 172, 93, 0.12);
-    color: #ecd29a;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    padding: 3px 12px;
+    justify-content: center;
+    height: 30px;
+    padding: 0 18px;
+    margin-bottom: 9px;
     border-radius: 999px;
-    text-transform: uppercase;
-    text-shadow: 0 0 12px rgba(255, 215, 140, 0.25);
+    border: 1px solid rgba(216, 177, 103, 0.78);
+    background: rgba(80, 51, 28, 0.56);
+    color: #f3d89c;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.10),
+      0 0 14px rgba(219, 172, 86, 0.10);
   }
-  .plan-cta-title {
-    color: #fffdf7;
-    font-size: 19px;
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-  .plan-cta-sub {
-    color: #e8cf9d;
-    font-size: 12px;
-    line-height: 1.3;
-    letter-spacing: -0.005em;
+  .ktm-plan-title {
+    color: #fff9ee;
+    font-size: 27px;
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    opacity: .94;
   }
-
-  /* ----- Right circular button ----- */
-  .plan-cta-arrow {
+  .ktm-plan-subtitle {
+    margin-top: 7px;
+    color: #e6c995;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+  .ktm-plan-arrow {
     position: relative;
     z-index: 2;
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f7eed7 60%, #e9dab8 100%);
-    border: 1px solid rgba(243, 226, 188, 0.85);
+    flex: 0 0 62px;
+    width: 62px;
+    height: 62px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at 35% 28%, #fffdf3 0%, #f5ead0 58%, #e2c994 100%);
+    color: #2a1a10;
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 300;
     box-shadow:
-      0 10px 22px rgba(0, 0, 0, 0.22),
-      inset 0 1px 0 rgba(255,255,255,.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #1d1208;
-    transition: transform .25s ease;
+      0 11px 24px rgba(0,0,0,0.22),
+      inset 0 1px 0 rgba(255,255,255,0.85),
+      inset 0 -4px 8px rgba(142, 98, 37, 0.12);
+    border: 1px solid rgba(255, 242, 206, 0.84);
+    padding-bottom: 5px;
   }
-  .plan-cta:hover .plan-cta-arrow { transform: translateX(2px); }
 
-  body[data-picker-open="true"] .plan-cta,
-  body[data-itin-open="true"] .plan-cta { display: none; }
+  body[data-picker-open="true"] .ktm-plan-cta-wrap,
+  body[data-itin-open="true"] .ktm-plan-cta-wrap { display: none; }
 
-  @media (max-width: 480px) {
-    .plan-cta { padding: 12px 12px; gap: 12px; border-radius: 22px; }
-    .cta-compass-svg { width: 72px; height: 72px; }
-    .plan-cta-title { font-size: 18px; }
-    .plan-cta-sub { font-size: 11.5px; }
-    .plan-cta-badge { font-size: 10px; padding: 2px 10px; letter-spacing: 0.20em; }
-    .plan-cta-arrow { width: 46px; height: 46px; }
-    .plan-cta-arrow svg { width: 20px; height: 20px; }
+  @media (max-width: 430px) {
+    .ktm-plan-cta-wrap { left: 14px; right: 14px; bottom: 164px; }
+    .ktm-plan-cta { min-height: 108px; padding: 14px 15px; gap: 14px; border-radius: 28px; }
+    .ktm-plan-compass { flex-basis: 78px; width: 78px; height: 78px; }
+    .ktm-compass-cross-v { height: 43px; }
+    .ktm-compass-cross-h { width: 43px; }
+    .ktm-plan-badge { height: 28px; padding: 0 16px; margin-bottom: 8px; font-size: 14px; }
+    .ktm-plan-title { font-size: 25px; }
+    .ktm-plan-subtitle { font-size: 15px; }
+    .ktm-plan-arrow { flex-basis: 58px; width: 58px; height: 58px; font-size: 38px; }
   }
-  @media (max-width: 360px) {
-    .plan-cta-sub { font-size: 10.5px; }
-    .plan-cta-title { font-size: 16.5px; }
+  @media (max-width: 375px) {
+    .ktm-plan-cta { gap: 11px; padding: 13px; }
+    .ktm-plan-compass { flex-basis: 70px; width: 70px; height: 70px; }
+    .ktm-plan-badge { font-size: 12px; height: 25px; padding: 0 13px; }
+    .ktm-plan-title { font-size: 22px; }
+    .ktm-plan-subtitle { font-size: 13.5px; }
+    .ktm-plan-arrow { flex-basis: 52px; width: 52px; height: 52px; font-size: 34px; }
   }
 
   /* ===== Destination Picker Sheet ===== */
@@ -1044,120 +1127,38 @@
   </div>
 </div>
 
-<!-- ===== Premium floating CTA: Travel Plan (luxury dark-brown + gold) ===== -->
-<button class="plan-cta" id="planCta" onclick="openPlannerSheet()" aria-label="내 여행 일정 만들기">
-  <!-- Ornate gold compass (pure SVG) -->
-  <svg class="cta-compass-svg" viewBox="0 0 100 100" aria-hidden="true">
-    <defs>
-      <radialGradient id="ctaOuter" cx="32%" cy="28%" r="72%">
-        <stop offset="0%"  stop-color="#fff7dc"/>
-        <stop offset="22%" stop-color="#f1d99c"/>
-        <stop offset="50%" stop-color="#c89a4f"/>
-        <stop offset="78%" stop-color="#7a4f1c"/>
-        <stop offset="100%" stop-color="#2a180a"/>
-      </radialGradient>
-      <radialGradient id="ctaInner" cx="42%" cy="38%" r="68%">
-        <stop offset="0%"  stop-color="#fffaea"/>
-        <stop offset="55%" stop-color="#f3e1ad"/>
-        <stop offset="100%" stop-color="#c89c5a"/>
-      </radialGradient>
-      <linearGradient id="ctaNeedleN" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#d8482a"/>
-        <stop offset="100%" stop-color="#7a1d10"/>
-      </linearGradient>
-      <linearGradient id="ctaNeedleS" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#a07232"/>
-        <stop offset="100%" stop-color="#e3b264"/>
-      </linearGradient>
-      <radialGradient id="ctaPivot" cx="35%" cy="35%" r="65%">
-        <stop offset="0%" stop-color="#fde8b8"/>
-        <stop offset="55%" stop-color="#a07432"/>
-        <stop offset="100%" stop-color="#3d2510"/>
-      </radialGradient>
-    </defs>
+<!-- ===== Premium floating CTA: Travel Plan (ktm-plan- prefix) ===== -->
+<div class="ktm-plan-cta-wrap" id="planCta">
+  <button class="ktm-plan-cta" type="button" onclick="openPlannerSheet()">
+    <div class="ktm-plan-shine ktm-plan-shine-1"></div>
+    <div class="ktm-plan-shine ktm-plan-shine-2"></div>
+    <div class="ktm-plan-sparkle sparkle-a">✦</div>
+    <div class="ktm-plan-sparkle sparkle-b">✧</div>
 
-    <!-- outer rim (gold→brown) -->
-    <circle cx="50" cy="50" r="49" fill="url(#ctaOuter)"/>
-
-    <!-- 24 fluted gold ticks around the perimeter -->
-    <g stroke="#7a5224" stroke-width="0.6" opacity="0.55">
-      <line x1="50" y1="3"  x2="50" y2="9"/>
-      <line x1="50" y1="91" x2="50" y2="97"/>
-      <line x1="3"  y1="50" x2="9"  y2="50"/>
-      <line x1="91" y1="50" x2="97" y2="50"/>
-      <line x1="17" y1="17" x2="22" y2="22"/>
-      <line x1="83" y1="17" x2="78" y2="22"/>
-      <line x1="17" y1="83" x2="22" y2="78"/>
-      <line x1="83" y1="83" x2="78" y2="78"/>
-      <line x1="33" y1="6"  x2="34.5" y2="11"/>
-      <line x1="67" y1="6"  x2="65.5" y2="11"/>
-      <line x1="33" y1="94" x2="34.5" y2="89"/>
-      <line x1="67" y1="94" x2="65.5" y2="89"/>
-      <line x1="6"  y1="33" x2="11" y2="34.5"/>
-      <line x1="6"  y1="67" x2="11" y2="65.5"/>
-      <line x1="94" y1="33" x2="89" y2="34.5"/>
-      <line x1="94" y1="67" x2="89" y2="65.5"/>
-    </g>
-
-    <!-- inner gold border + cream face -->
-    <circle cx="50" cy="50" r="40" fill="#5a3a14"/>
-    <circle cx="50" cy="50" r="38.5" fill="url(#ctaInner)"/>
-    <circle cx="50" cy="50" r="38.5" fill="none" stroke="#8a5d23" stroke-width="0.7"/>
-
-    <!-- 8-point compass rose (large diamonds + smaller diagonals) -->
-    <g>
-      <polygon points="50,11 53,49 50,49.5 47,49" fill="#c69954" stroke="#5a3a14" stroke-width="0.4"/>
-      <polygon points="50,89 53,51 50,50.5 47,51" fill="#c69954" stroke="#5a3a14" stroke-width="0.4"/>
-      <polygon points="89,50 51,53 50.5,50 51,47" fill="#c69954" stroke="#5a3a14" stroke-width="0.4"/>
-      <polygon points="11,50 49,53 49.5,50 49,47" fill="#c69954" stroke="#5a3a14" stroke-width="0.4"/>
-
-      <polygon points="74,26 51,49 49.5,50.5 26,74" fill="#a47a36" opacity="0.55"/>
-      <polygon points="74,74 51,51 49.5,49.5 26,26" fill="#a47a36" opacity="0.55"/>
-    </g>
-
-    <!-- direction letters -->
-    <g font-family="Fraunces, Georgia, serif" font-size="6.5" font-weight="700" text-anchor="middle" fill="#5a3d18">
-      <text x="50" y="9">N</text>
-      <text x="50" y="95.5">S</text>
-      <text x="6.5" y="52.5">W</text>
-      <text x="93.5" y="52.5">E</text>
-    </g>
-
-    <!-- needle, rotated NE (~28°) for visual interest -->
-    <g transform="rotate(28, 50, 50)">
-      <polygon points="50,16 53,50 50,48" fill="url(#ctaNeedleN)"/>
-      <polygon points="50,16 47,50 50,48" fill="#9b1d10" opacity="0.85"/>
-      <polygon points="50,84 53,50 50,52" fill="#85581f" opacity="0.85"/>
-      <polygon points="50,84 47,50 50,52" fill="url(#ctaNeedleS)"/>
-    </g>
-
-    <!-- center pivot -->
-    <circle cx="50" cy="50" r="3.6" fill="url(#ctaPivot)" stroke="#3d2510" stroke-width="0.4"/>
-    <circle cx="49" cy="49" r="1.1" fill="#fff5d2" opacity="0.9"/>
-
-    <!-- specular highlight on top-left (gives metallic feel) -->
-    <ellipse cx="34" cy="26" rx="14" ry="5.5" fill="#fff5d2" opacity="0.32"/>
-  </svg>
-
-  <div class="plan-cta-body">
-    <div class="plan-cta-badge">PRIVATE PLAN</div>
-    <div class="plan-cta-title">
-      <span class="ko-text">내 여행 일정 만들기</span>
-      <span class="en-text">Build My Trip Plan</span>
+    <div class="ktm-plan-compass" aria-hidden="true">
+      <div class="ktm-compass-outer"></div>
+      <div class="ktm-compass-inner"></div>
+      <div class="ktm-compass-glass"></div>
+      <div class="ktm-compass-cross ktm-compass-cross-v"></div>
+      <div class="ktm-compass-cross ktm-compass-cross-h"></div>
+      <div class="ktm-compass-needle ktm-compass-needle-n"></div>
+      <div class="ktm-compass-needle ktm-compass-needle-s"></div>
+      <div class="ktm-compass-center"></div>
+      <span class="ktm-compass-letter ktm-n">N</span>
+      <span class="ktm-compass-letter ktm-s">S</span>
+      <span class="ktm-compass-letter ktm-w">W</span>
+      <span class="ktm-compass-letter ktm-e">E</span>
     </div>
-    <div class="plan-cta-sub">
-      <span class="ko-text">가고 싶은 곳만 고르면 자동으로 일정 완성</span>
-      <span class="en-text">Pick what you want — we plan the rest</span>
-    </div>
-  </div>
 
-  <div class="plan-cta-arrow" aria-hidden="true">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="5" y1="12" x2="19" y2="12"/>
-      <polyline points="12 5 19 12 12 19"/>
-    </svg>
-  </div>
-</button>
+    <div class="ktm-plan-copy">
+      <div class="ktm-plan-badge">PRIVATE PLAN</div>
+      <div class="ktm-plan-title">내 여행 일정 만들기</div>
+      <div class="ktm-plan-subtitle">가고 싶은 곳만 고르면 자동으로 일정 완성</div>
+    </div>
+
+    <div class="ktm-plan-arrow" aria-hidden="true">→</div>
+  </button>
+</div>
 
 <!-- ===== Destination Picker Sheet ===== -->
 <div class="picker-sheet" id="pickerSheet" aria-modal="true" role="dialog">
@@ -1597,12 +1598,14 @@
   }
 
   function positionCTA() {
+    // Keep the .ktm-plan-cta-wrap floating ~16px above .bottom-panel
+    // even if the panel changes height (legend wrap on narrow screens).
     var panel = document.querySelector('.bottom-panel');
-    var cta = document.getElementById('planCta');
-    if (!panel || !cta) return;
+    var wrap = document.querySelector('.ktm-plan-cta-wrap');
+    if (!panel || !wrap) return;
     var panelRect = panel.getBoundingClientRect();
-    var bottomGap = window.innerHeight - panelRect.top + 14;
-    cta.style.bottom = bottomGap + 'px';
+    var bottomGap = window.innerHeight - panelRect.top + 16;
+    wrap.style.bottom = bottomGap + 'px';
   }
 
   function openPlanner() {
