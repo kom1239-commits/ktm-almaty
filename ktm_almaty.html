@@ -768,363 +768,154 @@
     .photo-pin-meta { font-size: 9px; }
   }
 
-  /* ===== Premium Travel Plan CTA — Final Mobile Version ===== */
-
+  /* ==================================================================
+     💎 [디자인 완벽 동기화] Premium Travel Plan CTA (럭셔리 다크/골드)
+     ================================================================== */
   .ktm-plan-cta-wrap {
     position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
+    left: 16px;
+    right: 16px;
+    bottom: 24px; /* 알마티 페이지에서는 하단 여백 24px 유지 */
     z-index: 800;
   }
 
   .ktm-plan-cta {
     position: relative;
     width: 100%;
-    min-height: 96px;
-    border: 1px solid rgba(218, 176, 101, 0.62);
-    border-radius: 28px;
+    height: 78px;
+    background:
+      radial-gradient(circle at 10% 50%, rgba(200, 160, 95, 0.25) 0%, transparent 50%),
+      linear-gradient(145deg, #2b241e 0%, #17130f 100%);
+    border: 1px solid rgba(200, 160, 95, 0.3);
+    border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    padding: 12px 14px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 14px;
     text-align: left;
     font-family: inherit;
-    background:
-      radial-gradient(circle at 12% 28%, rgba(246, 203, 117, 0.26) 0%, rgba(246, 203, 117, 0.08) 28%, transparent 46%),
-      radial-gradient(circle at 55% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 30%),
-      radial-gradient(circle at 88% 48%, rgba(241, 204, 134, 0.13) 0%, transparent 35%),
-      linear-gradient(135deg, #1b110c 0%, #2a1a10 24%, #4b321f 52%, #2b1b11 76%, #150d08 100%);
-    box-shadow:
-      0 14px 30px rgba(34, 20, 10, 0.32),
-      0 4px 10px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 233, 184, 0.20),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.38);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     -webkit-tap-highlight-color: transparent;
   }
 
   .ktm-plan-cta::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.62;
-    background:
-      linear-gradient(112deg, transparent 0%, rgba(255,255,255,0.055) 18%, transparent 36%),
-      repeating-linear-gradient(
-        45deg,
-        rgba(255,255,255,0.018) 0px,
-        rgba(255,255,255,0.018) 1px,
-        transparent 1px,
-        transparent 10px
-      );
+    content: ""; position: absolute; inset: 0; opacity: 0.3; pointer-events: none;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 8px);
   }
+  .ktm-plan-cta:active { transform: scale(0.985); }
 
-  .ktm-plan-cta::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    border-radius: 27px;
-    border: 1px solid rgba(255, 226, 165, 0.08);
-    pointer-events: none;
-  }
+  .ktm-plan-sparkle { position: absolute; color: #f5db98; text-shadow: 0 0 10px rgba(255, 222, 144, 0.9); pointer-events: none; opacity: 0.9; }
+  .sparkle-a { left: 20px; top: 8px; font-size: 16px; }
+  .sparkle-b { left: 110px; bottom: 8px; font-size: 14px; opacity: 0.8; }
+  .sparkle-c { right: 140px; top: 12px; font-size: 12px; opacity: 0.6; }
 
-  .ktm-plan-cta:active {
-    transform: scale(0.985);
-  }
-
-  /* glow */
-  .ktm-plan-shine {
-    position: absolute;
-    border-radius: 999px;
-    pointer-events: none;
-    filter: blur(18px);
-  }
-
-  .ktm-plan-shine-1 {
-    width: 110px;
-    height: 110px;
-    left: -42px;
-    top: -26px;
-    background: rgba(232, 185, 93, 0.18);
-  }
-
-  .ktm-plan-shine-2 {
-    width: 100px;
-    height: 100px;
-    right: 28px;
-    bottom: -56px;
-    background: rgba(255, 235, 180, 0.10);
-  }
-
-  /* small sparkles */
-  .ktm-plan-sparkle {
-    position: absolute;
-    color: #f5db98;
-    text-shadow: 0 0 10px rgba(255, 222, 144, 0.9);
-    pointer-events: none;
-    opacity: 0.85;
-  }
-
-  .sparkle-a {
-    left: 122px;
-    top: 12px;
-    font-size: 12px;
-  }
-
-  .sparkle-b {
-    right: 116px;
-    top: 19px;
-    font-size: 10px;
-    opacity: 0.65;
-  }
-
-  /* compass */
   .ktm-plan-compass {
     position: relative;
-    flex: 0 0 72px;
-    width: 72px;
-    height: 72px;
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: grid;
     place-items: center;
-    filter: drop-shadow(0 9px 15px rgba(0, 0, 0, 0.32));
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
     z-index: 2;
+    margin-left: -4px;
   }
+  .ktm-compass-outer { position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(135deg, #f5d796 0%, #b88645 50%, #5e3b17 100%); }
+  .ktm-compass-inner { position: absolute; inset: 4px; border-radius: 50%; border: 1px solid rgba(80, 45, 15, 0.5); background: radial-gradient(circle at 35% 30%, #fcedc5 0%, #d4a558 60%, #9e6c2b 100%); }
+  .ktm-compass-glass { position: absolute; inset: 10px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,0.5), transparent 40%); }
+  .ktm-compass-cross-v { position: absolute; background: rgba(80, 45, 15, 0.6); width: 1px; height: 36px; z-index: 2;}
+  .ktm-compass-cross-h { position: absolute; background: rgba(80, 45, 15, 0.6); width: 36px; height: 1px; z-index: 2;}
+  .ktm-compass-needle-n { position: absolute; z-index: 3; left: 50%; top: 50%; width: 0; height: 0; transform: translate(-50%, -96%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 28px solid #3d2210; }
+  .ktm-compass-needle-s { position: absolute; z-index: 3; left: 50%; top: 50%; width: 0; height: 0; transform: translate(-50%, 4%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 28px solid #c99846; }
+  .ktm-compass-center { position: absolute; z-index: 4; width: 8px; height: 8px; border-radius: 50%; background: #fff2c8; box-shadow: 0 0 2px rgba(0,0,0,0.5); }
 
-  .ktm-compass-outer {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 30% 28%, #fff6d6 0%, #ead195 27%, #b47a28 54%, #593819 78%, #2a170b 100%);
-    box-shadow:
-      inset 0 2px 7px rgba(255, 255, 255, 0.42),
-      inset 0 -7px 13px rgba(52, 29, 9, 0.55),
-      0 7px 16px rgba(0, 0, 0, 0.28);
-  }
-
-  .ktm-compass-inner {
-    position: absolute;
-    inset: 8px;
-    border-radius: 50%;
-    border: 1px solid rgba(126, 82, 26, 0.34);
-    background:
-      radial-gradient(circle at 35% 30%, #fff8df 0%, #f4e4b8 52%, #cc9a4c 100%);
-    box-shadow:
-      inset 0 0 8px rgba(255, 255, 255, 0.70),
-      inset 0 -5px 9px rgba(115, 68, 22, 0.20);
-  }
-
-  .ktm-compass-glass {
-    position: absolute;
-    inset: 13px;
-    border-radius: 50%;
-    background:
-      linear-gradient(135deg, rgba(255,255,255,0.42), transparent 34%),
-      radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
-    border: 1px solid rgba(255, 246, 213, 0.38);
-  }
-
-  .ktm-compass-cross {
-    position: absolute;
-    background: rgba(97, 57, 20, 0.76);
-    z-index: 2;
-  }
-
-  .ktm-compass-cross-v {
-    width: 1.4px;
-    height: 40px;
-  }
-
-  .ktm-compass-cross-h {
-    width: 40px;
-    height: 1.4px;
-  }
-
-  .ktm-compass-needle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 0;
-    height: 0;
-    z-index: 3;
-  }
-
-  .ktm-compass-needle-n {
-    transform: translate(-50%, -94%);
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 26px solid #6b351a;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));
-  }
-
-  .ktm-compass-needle-s {
-    transform: translate(-50%, 5%);
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 26px solid #c88735;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
-  }
-
-  .ktm-compass-center {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: #5a3216;
-    z-index: 4;
-    box-shadow: 0 0 0 2px rgba(243, 211, 137, 0.52);
-  }
-
-  .ktm-compass-letter {
-    position: absolute;
-    z-index: 5;
-    font-size: 8px;
-    font-weight: 700;
-    color: #7a4b20;
-    font-family: Georgia, serif;
-  }
-
-  .ktm-n { top: 6px; left: 50%; transform: translateX(-50%); }
-  .ktm-s { bottom: 6px; left: 50%; transform: translateX(-50%); }
-  .ktm-w { left: 8px; top: 50%; transform: translateY(-50%); }
-  .ktm-e { right: 8px; top: 50%; transform: translateY(-50%); }
-
-  /* text */
   .ktm-plan-copy {
     position: relative;
     z-index: 2;
     flex: 1 1 auto;
     min-width: 0;
-    overflow: hidden;
-    padding-top: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .ktm-plan-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 24px;
-    padding: 0 14px;
-    margin-bottom: 6px;
+    height: 18px;
+    padding: 0 8px;
+    margin-bottom: 4px;
     border-radius: 999px;
-    border: 1px solid rgba(216, 177, 103, 0.78);
-    background: rgba(80, 51, 28, 0.56);
-    color: #f3d89c;
+    border: 1px solid #cca976;
+    background: transparent;
+    color: #cca976;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 700;
-    letter-spacing: 0.16em;
-    line-height: 1;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.10),
-      0 0 12px rgba(219, 172, 86, 0.10);
+    letter-spacing: 0.1em;
+    width: fit-content;
   }
 
   .ktm-plan-title {
-    color: #fff9ee;
-    font-size: 23px;
+    color: #ffffff;
+    font-size: 19px;
     font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.055em;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .ktm-plan-subtitle {
-    margin-top: 5px;
-    color: #e6c995;
-    font-size: 13.5px;
-    font-weight: 500;
+    margin-top: 3px;
+    color: #cca976;
+    font-size: 12px;
+    font-weight: 400;
     line-height: 1.2;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden; 
     text-overflow: ellipsis;
   }
 
-  /* arrow */
   .ktm-plan-arrow {
     position: relative;
     z-index: 2;
-    flex: 0 0 54px;
-    width: 54px;
-    height: 54px;
-    border-radius: 999px;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     display: grid;
     place-items: center;
-    background:
-      radial-gradient(circle at 35% 28%, #fffdf3 0%, #f5ead0 58%, #e2c994 100%);
-    color: #2a1a10;
-    font-size: 36px;
-    line-height: 1;
-    font-weight: 300;
-    box-shadow:
-      0 10px 22px rgba(0,0,0,0.22),
-      inset 0 1px 0 rgba(255,255,255,0.85),
-      inset 0 -4px 8px rgba(142, 98, 37, 0.12);
-    border: 1px solid rgba(255, 242, 206, 0.84);
-    padding-bottom: 5px;
+    background: #fdf8eb;
+    color: #2b1c10;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    border: none;
   }
 
   body[data-detail-open="true"] .ktm-plan-cta-wrap,
   body[data-picker-open="true"] .ktm-plan-cta-wrap,
-  body[data-itin-open="true"] .ktm-plan-cta-wrap {
-    display: none;
-  }
+  body[data-itin-open="true"] .ktm-plan-cta-wrap { display: none; }
 
-  /* Small mobile */
   @media (max-width: 393px) {
-    .ktm-plan-cta-wrap {
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-    }
-
-    .ktm-plan-cta {
-      min-height: 90px;
-      padding: 11px 12px;
-      gap: 10px;
-      border-radius: 26px;
-    }
-
-    .ktm-plan-compass {
-      flex-basis: 64px;
-      width: 64px;
-      height: 64px;
-    }
-
-    .ktm-compass-cross-v { height: 36px; }
-    .ktm-compass-cross-h { width: 36px; }
-    .ktm-compass-needle-n { border-bottom-width: 23px; }
-    .ktm-compass-needle-s { border-top-width: 23px; }
-
-    .ktm-plan-badge {
-      height: 22px;
-      padding: 0 12px;
-      margin-bottom: 5px;
-      font-size: 11px;
-    }
-
-    .ktm-plan-title {
-      font-size: 20px;
-    }
-
-    .ktm-plan-subtitle {
-      font-size: 12px;
-    }
-
-    .ktm-plan-arrow {
-      flex-basis: 48px;
-      width: 48px;
-      height: 48px;
-      font-size: 32px;
-    }
+    .ktm-plan-cta-wrap { left: 12px; right: 12px; bottom: 16px; }
+    .ktm-plan-cta { height: 72px; padding: 0 14px; border-radius: 18px; gap: 12px; }
+    .ktm-plan-compass { flex-basis: 50px; width: 50px; height: 50px; }
+    .ktm-compass-cross-v { height: 30px; }
+    .ktm-compass-cross-h { width: 30px; }
+    .ktm-compass-needle-n { border-bottom-width: 24px; }
+    .ktm-compass-needle-s { border-top-width: 24px; }
+    .ktm-plan-badge { height: 16px; padding: 0 6px; font-size: 8px; margin-bottom: 2px;}
+    .ktm-plan-title { font-size: 17px; }
+    .ktm-plan-subtitle { font-size: 11px; }
+    .ktm-plan-arrow { flex-basis: 38px; width: 38px; height: 38px; font-size: 18px; }
   }
 
   /* ===== Destination Picker Sheet ===== */
@@ -1632,12 +1423,12 @@
       <span class="en-text">My Location</span>
     </button>
 
+    <!-- ===== [수정됨] 럭셔리 다크/골드 CTA 배너 ===== -->
     <div class="ktm-plan-cta-wrap" id="planCta">
       <button class="ktm-plan-cta" type="button" onclick="openPlannerSheet()">
-        <div class="ktm-plan-shine ktm-plan-shine-1"></div>
-        <div class="ktm-plan-shine ktm-plan-shine-2"></div>
         <div class="ktm-plan-sparkle sparkle-a">✦</div>
-        <div class="ktm-plan-sparkle sparkle-b">✧</div>
+        <div class="ktm-plan-sparkle sparkle-b">✦</div>
+        <div class="ktm-plan-sparkle sparkle-c">✦</div>
 
         <div class="ktm-plan-compass" aria-hidden="true">
           <div class="ktm-compass-outer"></div>
@@ -1648,10 +1439,6 @@
           <div class="ktm-compass-needle ktm-compass-needle-n"></div>
           <div class="ktm-compass-needle ktm-compass-needle-s"></div>
           <div class="ktm-compass-center"></div>
-          <span class="ktm-compass-letter ktm-n">N</span>
-          <span class="ktm-compass-letter ktm-s">S</span>
-          <span class="ktm-compass-letter ktm-w">W</span>
-          <span class="ktm-compass-letter ktm-e">E</span>
         </div>
 
         <div class="ktm-plan-copy">
@@ -1660,7 +1447,7 @@
           <div class="ktm-plan-subtitle">가고 싶은 곳만 고르면 자동으로 일정 완성</div>
         </div>
 
-        <div class="ktm-plan-arrow" aria-hidden="true">→</div>
+        <div class="ktm-plan-arrow" aria-hidden="true">➔</div>
       </button>
     </div>
 
@@ -1800,8 +1587,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-  // ============ DATA — 22 spots ============
-  // photo: Unsplash search keyword for matching imagery
   var PLACES = [
     // East · Canyons & Lakes
     { id:"charyn", category:"canyon", coords:[43.3598684, 79.0500292],
@@ -2087,7 +1872,6 @@
 
   // ============ HELPERS ============
   function photoUrl(p, w, h) {
-    // Unsplash Source API: returns a random matched image for the keywords
     return 'https://source.unsplash.com/' + w + 'x' + h + '/?' + encodeURIComponent(p.photo);
   }
 
@@ -2117,8 +1901,6 @@
     var name = lang === 'en' ? p.name_en : p.name_ko;
     var meta = (lang === 'en' ? p.distance_en : p.distance_ko) + ' · ' +
                (lang === 'en' ? p.time_en : p.time_ko);
-    // Color the pin border with p.color when not active so each marker is
-    // visually distinct (e.g. purple Black Canyon vs red Luna Canyon).
     var cardStyle = isActive ? '' : ' style="border-color:' + p.color + ';"';
     var tailStyle = isActive ? '' : ' style="background:' + p.color + ';border-color:' + p.color + ';"';
     return '<div class="photo-pin-wrap">' +
@@ -2150,7 +1932,6 @@
     PLACES.forEach(function(p) {
       var marker = markers[p.id];
       if (!marker) return;
-      // Hide if filtered out
       var visible = filteredPlaces.some(function(x) { return x.id === p.id; });
       if (!visible) {
         if (map.hasLayer(marker)) map.removeLayer(marker);
@@ -2176,7 +1957,6 @@
 
     var zoom = (p.category === 'city' || p.id === 'bao') ? 11 : 9;
 
-    // On mobile, switch to map view when a place is picked from the list
     if (window.innerWidth <= 968 && document.body.getAttribute('data-view') !== 'map') {
       setView('map');
     }
@@ -2189,7 +1969,6 @@
       var isMobile = window.innerWidth <= 968;
       var target = p.coords;
       if (isMobile) {
-        // Shift map center so the pin appears above the bottom detail card
         var cardEl = document.getElementById('detailCard');
         var cardH = cardEl ? cardEl.offsetHeight : 300;
         var pt = map.project(p.coords, zoom);
@@ -2335,7 +2114,6 @@
     document.querySelectorAll('.mobile-tab').forEach(function(t) {
       t.classList.toggle('active', t.dataset.view === view);
     });
-    // Leaflet needs to recompute size when its container becomes visible
     if (view === 'map' && map) {
       setTimeout(function() { map.invalidateSize(); }, 50);
     }
@@ -2381,7 +2159,7 @@
   }
 
   // ============ TRAVEL PLANNER ============
-  var WHATSAPP_NUMBER = '77019999999'; // TODO: replace with real number
+  var WHATSAPP_NUMBER = '77019999999';
 
   var GROUPS = {
     city:          ['koktobe','medeu','shymbulak','green-bazaar','panfilov'],
@@ -2393,7 +2171,7 @@
   var OVERNIGHT_IDS = ['saty-village','kolsai','kaindy','tuzkol','basshi','singing-dune','aktau-mountains'];
   var FOURWD_IDS    = ['kaindy','assy-observatory','singing-dune','aktau-mountains','tuzkol'];
 
-  var selectedPlanIds = [];   // ordered array (used as a Set-like)
+  var selectedPlanIds = [];
   var planCategory = 'all';
 
   function isSelected(id) { return selectedPlanIds.indexOf(id) >= 0; }
@@ -2511,7 +2289,6 @@
     var hasNear   = inG('nearcity');
     var allCity   = picks.length > 0 && picks.every(function(p) { return GROUPS.city.indexOf(p.id) >= 0; });
 
-    // ----- duration -----
     var nights = 0;
     if (hasCanyon || hasLake || hasAltyn) nights = 1;
     if (hasLake && hasAltyn) nights = 2;
@@ -2529,7 +2306,6 @@
       durationLabel = lang === 'en' ? (days + 'D' + nights + 'N') : (nights + '박' + days + '일');
     }
 
-    // ----- intensity / stay / vehicle -----
     var intensity;
     if (nights >= 2) intensity = lang === 'en' ? 'High' : '높음';
     else if (nights === 1 || hasCanyon || hasAltyn) intensity = lang === 'en' ? 'Moderate' : '보통';
@@ -2547,28 +2323,24 @@
     else if (hasCanyon || hasLake || hasAltyn) vehicle = lang === 'en' ? 'Sedan or SUV' : '세단 또는 SUV';
     else vehicle = lang === 'en' ? 'Any car' : '모든 차량';
 
-    // ----- day-by-day -----
     function stop(name, meta) { return { name: name, meta: meta || '' }; }
+    function nameOf(p) { return lang === 'en' ? p.name_en : p.name_ko; }
+    function metaOf(p) { return lang === 'en' ? p.meta_en : p.meta_ko; }
+
     var dayPlan = [];
     var T = lang === 'en';
 
     if (allCity || (!hasCanyon && !hasLake && !hasAltyn && (hasNear || picks.length > 0))) {
-      // City + near-city only — 1-day plan
       var d = { title: T ? 'Around Almaty' : '알마티 시내·근교', stops: [] };
       d.stops.push(stop(T ? 'Start in Almaty' : '알마티 출발', T ? 'Morning departure' : '아침 출발'));
-      picks.forEach(function(p) {
-        d.stops.push(stop(T ? p.name_en : p.name_ko, (T ? p.distance_en : p.distance_ko) + ' · ' + (T ? p.time_en : p.time_ko)));
-      });
+      picks.forEach(function(p) { d.stops.push(stop(nameOf(p), metaOf(p))); });
       d.stops.push(stop(T ? 'Return to Almaty' : '알마티 복귀', ''));
       dayPlan.push(d);
     } else {
-      // Day 1
       if (hasCanyon) {
         var d1 = { title: T ? 'Canyon route' : '캐년 코스', stops: [] };
         d1.stops.push(stop(T ? 'Depart Almaty' : '알마티 출발', T ? 'Recommend 06:00' : '06:00 출발 권장'));
-        picksIn('canyonCluster').forEach(function(p) {
-          d1.stops.push(stop(T ? p.name_en : p.name_ko, (T ? p.distance_en : p.distance_ko) + ' · ' + (T ? p.time_en : p.time_ko)));
-        });
+        picksIn('canyonCluster').forEach(function(p) { d1.stops.push(stop(nameOf(p), metaOf(p))); });
         if (hasLake)       d1.stops.push(stop(T ? 'Stay at Saty Village' : '사티 마을 숙박', T ? 'Gateway to Kolsai/Kaindy' : '콜사이·카인디 베이스'));
         else if (hasAltyn) d1.stops.push(stop(T ? 'Drive to Basshi Village' : '바스히 마을로 이동', T ? 'Altyn-Emel base' : '알튼에멜 베이스'));
         else               d1.stops.push(stop(T ? 'Return to Almaty' : '알마티 복귀', T ? 'Late arrival' : '밤 늦게 도착'));
@@ -2576,65 +2348,49 @@
       } else if (hasLake) {
         var d1l = { title: T ? 'Lakes day' : '호수 코스', stops: [] };
         d1l.stops.push(stop(T ? 'Depart Almaty' : '알마티 출발', T ? 'Morning' : '아침 출발'));
-        picksIn('lakeCluster').forEach(function(p) {
-          d1l.stops.push(stop(T ? p.name_en : p.name_ko, (T ? p.distance_en : p.distance_ko) + ' · ' + (T ? p.time_en : p.time_ko)));
-        });
+        picksIn('lakeCluster').forEach(function(p) { d1l.stops.push(stop(nameOf(p), metaOf(p))); });
         d1l.stops.push(stop(T ? 'Stay at Saty Village' : '사티 마을 숙박', ''));
         dayPlan.push(d1l);
       } else if (hasAltyn) {
         var d1a = { title: T ? 'Altyn-Emel approach' : '알튼에멜 접근', stops: [] };
         d1a.stops.push(stop(T ? 'Depart Almaty' : '알마티 출발', T ? 'Morning' : '아침 출발'));
-        picksIn('altynEmel').slice(0, 1).forEach(function(p) {
-          d1a.stops.push(stop(T ? p.name_en : p.name_ko, (T ? p.distance_en : p.distance_ko) + ' · ' + (T ? p.time_en : p.time_ko)));
-        });
+        picksIn('altynEmel').slice(0, 1).forEach(function(p) { d1a.stops.push(stop(nameOf(p), metaOf(p))); });
         d1a.stops.push(stop(T ? 'Stay at Basshi Village' : '바스히 마을 숙박', ''));
         dayPlan.push(d1a);
       }
 
-      // Day 2
       if (hasLake && hasCanyon) {
         var d2 = { title: T ? 'Lakes day' : '호수 탐방', stops: [] };
-        picksIn('lakeCluster').forEach(function(p) {
-          d2.stops.push(stop(T ? p.name_en : p.name_ko, ''));
-        });
+        picksIn('lakeCluster').forEach(function(p) { d2.stops.push(stop(nameOf(p), '')); });
         if (hasAltyn) d2.stops.push(stop(T ? 'Drive to Basshi' : '바스히로 이동', ''));
         else          d2.stops.push(stop(T ? 'Return to Almaty' : '알마티 복귀', ''));
         dayPlan.push(d2);
       } else if (hasAltyn && hasLake && !hasCanyon) {
         var d2b = { title: T ? 'Altyn-Emel exploration' : '알튼에멜 본격 탐방', stops: [] };
-        picksIn('altynEmel').forEach(function(p) {
-          d2b.stops.push(stop(T ? p.name_en : p.name_ko, ''));
-        });
+        picksIn('altynEmel').forEach(function(p) { d2b.stops.push(stop(nameOf(p), '')); });
         d2b.stops.push(stop(T ? 'Return to Almaty' : '알마티 복귀', ''));
         dayPlan.push(d2b);
       } else if (hasAltyn && !hasLake && !hasCanyon) {
         var d2c = { title: T ? 'Altyn-Emel core' : '알튼에멜 핵심', stops: [] };
-        picksIn('altynEmel').forEach(function(p) {
-          d2c.stops.push(stop(T ? p.name_en : p.name_ko, ''));
-        });
+        picksIn('altynEmel').forEach(function(p) { d2c.stops.push(stop(nameOf(p), '')); });
         d2c.stops.push(stop(T ? 'Return to Almaty' : '알마티 복귀', ''));
         dayPlan.push(d2c);
       }
 
-      // Day 3 (Altyn + Canyon + Lake)
       if (hasAltyn && (hasCanyon || hasLake) && nights >= 2 && dayPlan.length < 3) {
         var d3 = { title: T ? 'Altyn-Emel day' : '알튼에멜 마지막 날', stops: [] };
-        picksIn('altynEmel').forEach(function(p) {
-          d3.stops.push(stop(T ? p.name_en : p.name_ko, ''));
-        });
+        picksIn('altynEmel').forEach(function(p) { d3.stops.push(stop(nameOf(p), '')); });
         d3.stops.push(stop(T ? 'Return to Almaty' : '알마티 복귀', ''));
         dayPlan.push(d3);
       }
 
-      // Append near-city items as a final day if user mixed them in
       if (hasNear && dayPlan.length > 0) {
-        // they fit naturally on the return day's last stop — append meta
         var nearPicks = picksIn('nearcity');
         if (nearPicks.length) {
           var lastDay = dayPlan[dayPlan.length - 1];
           nearPicks.forEach(function(p) {
             lastDay.stops.splice(lastDay.stops.length - 1, 0,
-              stop(T ? p.name_en : p.name_ko, T ? 'Optional stop' : '선택 경유'));
+              stop(nameOf(p), T ? 'Optional stop' : '선택 경유'));
           });
         }
       }
@@ -2659,7 +2415,6 @@
     var plan = computePlan(selectedPlanIds);
     var T = lang === 'en';
 
-    // Summary
     document.getElementById('itinSummary').innerHTML =
       '<div class="itin-summary-title">' + (T ? 'Recommended trip' : '추천 일정') + '</div>' +
       '<div class="itin-summary-duration">' + plan.durationLabel + '</div>' +
@@ -2675,7 +2430,6 @@
         '<div class="itin-summary-row"><div class="lbl">' + (T ? 'Destinations' : '여행지') + '</div><div class="val">' + plan.count + (T ? '' : '곳') + '</div></div>' +
       '</div>';
 
-    // Timeline
     var tl = document.getElementById('itinTimeline');
     var sectionTitle = '<div class="itin-section-title">' + (T ? 'Day-by-day' : '일정 타임라인') + '</div>';
     var daysHtml = plan.dayPlan.map(function(day, idx) {
@@ -2736,7 +2490,7 @@
     window.open(url, '_blank');
   }
 
-  // ============ INIT ============
+  // ===== INIT =====
   window.addEventListener('DOMContentLoaded', function() {
     initMap();
     setupSearch();
