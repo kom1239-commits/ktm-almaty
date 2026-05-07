@@ -1918,30 +1918,32 @@
       center: [43.34, 79.04],
       zoom: 11,
       minZoom: 5,
-      maxZoom: 19,
+      maxZoom: 20,
       zoomControl: false,
       scrollWheelZoom: true,
       worldCopyJump: true,
       preferCanvas: true
     });
 
-    // Primary: OpenStreetMap Standard (HD, retina-aware)
+    // Primary: OpenStreetMap Standard (native to z19, upscaled to z20)
     var primary = L.tileLayer(
       'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
         attribution: '© OpenStreetMap contributors',
-        maxZoom: 19,
+        maxZoom: 20,
+        maxNativeZoom: 19,
         crossOrigin: true,
         detectRetina: true
       }
     );
-    // Fallback: CartoDB Voyager (HD @2x via {r})
+    // Fallback: CartoDB Voyager (HD @2x; native z19, upscaled to z20)
     var fallback = L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
       {
         attribution: '© OpenStreetMap, © CARTO',
         subdomains: 'abcd',
         maxZoom: 20,
+        maxNativeZoom: 19,
         crossOrigin: true,
         detectRetina: true
       }
