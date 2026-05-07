@@ -1917,17 +1917,42 @@
     map = L.map('map', {
       center: [43.34, 79.04],
       zoom: 11,
-      minZoom: 6,
-      maxZoom: 14,
+      minZoom: 5,
+      maxZoom: 19,
       zoomControl: false,
-      scrollWheelZoom: true
+      scrollWheelZoom: true,
+      worldCopyJump: true,
+      preferCanvas: true
     });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '© OpenStreetMap © CARTO',
-      subdomains: 'abcd',
-      maxZoom: 19
-    }).addTo(map);
+    // Primary: OpenStreetMap Standard (HD, retina-aware)
+    var primary = L.tileLayer(
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+        crossOrigin: true,
+        detectRetina: true
+      }
+    );
+    // Fallback: CartoDB Voyager (HD @2x via {r})
+    var fallback = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      {
+        attribution: '© OpenStreetMap, © CARTO',
+        subdomains: 'abcd',
+        maxZoom: 20,
+        crossOrigin: true,
+        detectRetina: true
+      }
+    );
+    primary.on('tileerror', function() {
+      if (map.hasLayer(primary)) {
+        map.removeLayer(primary);
+        fallback.addTo(map);
+      }
+    });
+    primary.addTo(map);
 
     L.control.zoom({ position: 'topleft' }).addTo(map);
 

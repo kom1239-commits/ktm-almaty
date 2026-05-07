@@ -1289,22 +1289,35 @@
     map = L.map('map', {
       center: [43.45, 77.95],
       zoom: 8,
-      minZoom: 6,
-      maxZoom: 14,
+      minZoom: 5,
+      maxZoom: 19,
       zoomControl: false,
       scrollWheelZoom: true,
-      attributionControl: true
+      attributionControl: true,
+      worldCopyJump: true,
+      preferCanvas: true
     });
 
-    // Primary: Esri World Topo Map (matches the screenshot style)
+    // Primary: OpenStreetMap Standard (HD, retina-aware)
     var primary = L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-      { attribution: 'Tiles © Esri', maxZoom: 18 }
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+        crossOrigin: true,
+        detectRetina: true
+      }
     );
-    // Fallback: OpenStreetMap (used if Esri tiles error out)
+    // Fallback: CartoDB Voyager (HD @2x via {r}) — used if OSM tiles error out
     var fallback = L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      { attribution: '© OpenStreetMap', maxZoom: 19 }
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      {
+        attribution: '© OpenStreetMap, © CARTO',
+        subdomains: 'abcd',
+        maxZoom: 20,
+        crossOrigin: true,
+        detectRetina: true
+      }
     );
     primary.on('tileerror', function() {
       if (map.hasLayer(primary)) {
