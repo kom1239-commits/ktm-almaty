@@ -1290,7 +1290,7 @@
       center: [43.45, 77.95],
       zoom: 8,
       minZoom: 5,
-      maxZoom: 20,
+      maxZoom: 21,
       zoomControl: false,
       scrollWheelZoom: true,
       attributionControl: true,
@@ -1298,33 +1298,54 @@
       preferCanvas: true
     });
 
-    // Primary: OpenStreetMap Standard (native to z19, upscaled to z20)
+    // Primary: OpenStreetMap Standard (native to z19)
     var primary = L.tileLayer(
       'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
         attribution: '© OpenStreetMap contributors',
-        maxZoom: 20,
+        maxZoom: 21,
         maxNativeZoom: 19,
         crossOrigin: true,
         detectRetina: true
       }
     );
-    // Fallback: CartoDB Voyager (HD @2x; native z19, upscaled to z20)
+    // Fallback A: Esri World Street Map (native z22 — sharp at high zoom)
     var fallback = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+      {
+        attribution: 'Tiles © Esri',
+        maxZoom: 22,
+        maxNativeZoom: 22,
+        crossOrigin: true
+      }
+    );
+    // Fallback B: CartoDB Voyager (HD @2x retina, native z19)
+    var fallbackCarto = L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
       {
         attribution: '© OpenStreetMap, © CARTO',
         subdomains: 'abcd',
-        maxZoom: 20,
+        maxZoom: 21,
         maxNativeZoom: 19,
         crossOrigin: true,
         detectRetina: true
       }
     );
+    // When user zooms past native OSM detail, swap to Esri Streets for sharp z20+
+    map.on('zoomend', function() {
+      if (map.getZoom() >= 20 && map.hasLayer(primary)) {
+        map.removeLayer(primary);
+        fallback.addTo(map);
+      } else if (map.getZoom() < 20 && map.hasLayer(fallback) && !map._cartoFallbackActive) {
+        map.removeLayer(fallback);
+        primary.addTo(map);
+      }
+    });
     primary.on('tileerror', function() {
       if (map.hasLayer(primary)) {
         map.removeLayer(primary);
-        fallback.addTo(map);
+        map._cartoFallbackActive = true;
+        fallbackCarto.addTo(map);
       }
     });
     primary.addTo(map);
