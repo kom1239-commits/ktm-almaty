@@ -1291,6 +1291,10 @@
       zoom: 8,
       minZoom: 5,
       maxZoom: 21,
+      zoomSnap: 0,
+      zoomDelta: 0.5,
+      wheelPxPerZoomLevel: 90,
+      bounceAtZoomLimits: false,
       zoomControl: false,
       scrollWheelZoom: true,
       attributionControl: true,
@@ -1333,10 +1337,11 @@
     );
     // When user zooms past native OSM detail, swap to Esri Streets for sharp z20+
     map.on('zoomend', function() {
-      if (map.getZoom() >= 20 && map.hasLayer(primary)) {
+      var z = map.getZoom();
+      if (z >= 19.5 && map.hasLayer(primary)) {
         map.removeLayer(primary);
         fallback.addTo(map);
-      } else if (map.getZoom() < 20 && map.hasLayer(fallback) && !map._cartoFallbackActive) {
+      } else if (z < 19.5 && map.hasLayer(fallback) && !map._cartoFallbackActive) {
         map.removeLayer(fallback);
         primary.addTo(map);
       }
